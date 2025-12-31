@@ -1,0 +1,549 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SheetSage - The Automated Auditor for Google Sheets</title>
+    <meta name="description" content="Scan your workbook for risky lookup formulas, rank issues by impact, and apply safer fixes with snapshots and restore. Privacy-first and local by default.">
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="assets/tailwind.css">
+    <link rel="stylesheet" href="assets/site.css">
+    <script src="assets/vendor/lucide.min.js" defer></script>
+    <script src="assets/site.js" defer></script>
+</head>
+<body class="bg-slate-50 text-slate-900 antialiased">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-white/80 backdrop-blur-md border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <a class="flex items-center gap-2" href="index.html">
+                    <div class="w-8 h-8 bg-emerald-600 rounded-lg flex items-center justify-center text-white font-bold text-xl" aria-hidden="true">S</div>
+                    <span class="font-bold text-xl tracking-tight text-slate-800">SheetSage</span>
+                </a>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#features" class="text-slate-600 hover:text-emerald-600 font-medium transition">Features</a>
+                    <a href="#how-it-works" class="text-slate-600 hover:text-emerald-600 font-medium transition">How it Works</a>
+                    <a href="#demo" class="text-slate-600 hover:text-emerald-600 font-medium transition">Demo</a>
+                    <a href="privacy.html" class="text-slate-600 hover:text-emerald-600 font-medium transition">Privacy</a>
+                    <a href="terms.html" class="text-slate-600 hover:text-emerald-600 font-medium transition">Terms</a>
+                </div>
+                <div class="flex items-center gap-2">
+                    <a href="#install" class="bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 sm:px-5 rounded-full font-medium transition shadow-lg shadow-emerald-200">
+                        Install (soon)
+                    </a>
+                    <button id="mobileMenuButton" type="button" class="md:hidden inline-flex items-center justify-center w-10 h-10 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 transition" aria-controls="mobileMenu" aria-expanded="false" aria-label="Open menu">
+                        <i data-lucide="menu" class="w-5 h-5 text-slate-700" aria-hidden="true"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id="mobileMenu" class="md:hidden hidden border-t border-slate-200 bg-white">
+            <div class="max-w-7xl mx-auto px-4 py-4 space-y-3">
+                <a href="#features" class="block text-slate-700 font-medium hover:text-emerald-600 transition">Features</a>
+                <a href="#how-it-works" class="block text-slate-700 font-medium hover:text-emerald-600 transition">How it Works</a>
+                <a href="#demo" class="block text-slate-700 font-medium hover:text-emerald-600 transition">Demo</a>
+                <a href="privacy.html" class="block text-slate-700 font-medium hover:text-emerald-600 transition">Privacy</a>
+                <a href="terms.html" class="block text-slate-700 font-medium hover:text-emerald-600 transition">Terms</a>
+                <a href="#install" class="block text-slate-700 font-medium hover:text-emerald-600 transition">Install (soon)</a>
+                <a href="mailto:hello@sheetsage.co.nz" class="block text-slate-700 font-medium hover:text-emerald-600 transition">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <div id="mobileMenuOverlay" class="md:hidden hidden fixed inset-0 bg-slate-900/30 backdrop-blur-sm z-40" aria-hidden="true"></div>
+
+    <!-- Hero Section -->
+    <section class="pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden bg-grid relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                
+                <!-- Hero Text -->
+                <div>
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-100 text-emerald-700 text-sm font-semibold mb-6">
+                        <i data-lucide="check-circle" class="w-4 h-4"></i>
+                        <span>New: Detect Hardcoded Magic Numbers</span>
+                    </div>
+                    <h1 class="text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight mb-6">
+                        Stop your spreadsheets from <span class="text-gradient">breaking silently.</span>
+                    </h1>
+                    <p class="text-xl text-slate-600 mb-8 leading-relaxed">
+                        The automated auditor for Google Sheets. Detect risky VLOOKUPs, fix reference drift, and quantify spreadsheet risk in seconds.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="#install" class="flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-4 rounded-lg font-bold text-lg transition shadow-xl shadow-emerald-200">
+                            <i data-lucide="download-cloud"></i>
+                            Install (soon)
+                        </a>
+                        <a href="#how-it-works" class="flex items-center justify-center gap-2 bg-white hover:bg-slate-50 text-slate-700 border border-slate-300 px-8 py-4 rounded-lg font-bold text-lg transition">
+                            <i data-lucide="play-circle"></i>
+                            See How it Works
+                        </a>
+                    </div>
+                    <p class="mt-4 text-sm text-slate-500">
+                        <i data-lucide="shield-check" class="w-4 h-4 inline mr-1 text-emerald-500"></i>
+                        Privacy-first: by default, spreadsheet content stays in Google Sheets.
+                    </p>
+                </div>
+
+                <!-- Hero Visual (Interactive UI Mockup) -->
+                <div class="relative">
+                    <!-- Decor elements -->
+                    <div class="absolute -top-12 -right-12 w-72 h-72 bg-emerald-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
+                    <div class="absolute -bottom-12 -left-12 w-72 h-72 bg-teal-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
+
+                    <!-- The App Card -->
+                    <div class="bg-white rounded-2xl shadow-2xl border border-slate-200 overflow-hidden transform rotate-1 hover:rotate-0 transition duration-500">
+                        <!-- App Header -->
+                        <div class="bg-slate-50 border-b border-slate-200 p-4 flex justify-between items-center">
+                            <div class="flex items-center gap-2">
+                                <span class="w-3 h-3 rounded-full bg-red-400"></span>
+                                <span class="w-3 h-3 rounded-full bg-amber-400"></span>
+                                <span class="w-3 h-3 rounded-full bg-green-400"></span>
+                            </div>
+                            <div class="text-xs font-mono text-slate-400">SheetSage Analysis</div>
+                        </div>
+
+                        <div class="p-6">
+                            <!-- Score Section -->
+                            <div class="flex items-center justify-between mb-8">
+                                <div>
+                                    <h3 class="text-slate-500 text-sm font-semibold uppercase tracking-wider">Workbook Health</h3>
+                                    <p class="text-3xl font-bold text-slate-900 mt-1">Critical Risk</p>
+                                </div>
+                                <div class="relative w-24 h-12 overflow-hidden">
+                                    <div class="absolute top-0 left-0 w-24 h-24 rounded-full border-[12px] border-slate-100"></div>
+                                    <div class="absolute top-0 left-0 w-24 h-24 rounded-full border-[12px] border-t-transparent border-r-transparent border-red-500 transform -rotate-45"></div>
+                                    <!-- Needle -->
+                                    <div class="absolute bottom-0 left-1/2 w-1 h-12 bg-slate-800 -ml-0.5 rounded-full gauge-needle"></div>
+                                </div>
+                            </div>
+
+                            <!-- Issue Cards -->
+                            <div class="space-y-3">
+                                <!-- Card 1: VLOOKUP -->
+                                <div class="group bg-white border border-red-100 rounded-xl p-4 shadow-sm hover:shadow-md transition cursor-pointer relative overflow-hidden">
+                                    <div class="absolute left-0 top-0 h-full w-1 bg-red-500"></div>
+                                    <div class="flex justify-between items-start">
+                                        <div>
+                                            <div class="flex items-center gap-2 mb-1">
+                                                <span class="text-red-600 font-bold text-sm">R1: VLOOKUP_EXACT</span>
+                                                <span class="bg-red-50 text-red-600 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase">High Risk</span>
+                                            </div>
+                                            <p class="text-slate-600 text-sm">25 formulas missing "FALSE" argument.</p>
+                                        </div>
+                                        <button class="text-xs bg-slate-900 text-white px-3 py-1.5 rounded-md hover:bg-slate-700 transition">Fix All</button>
+                                    </div>
+                                </div>
+
+                                <!-- Card 2: Anchoring -->
+                                <div class="group bg-white border border-amber-100 rounded-xl p-4 shadow-sm hover:shadow-md transition cursor-pointer relative overflow-hidden">
+                                    <div class="absolute left-0 top-0 h-full w-1 bg-amber-500"></div>
+                                    <div class="flex justify-between items-start">
+                                        <div>
+                                            <div class="flex items-center gap-2 mb-1">
+                                                <span class="text-amber-600 font-bold text-sm">R4: ANCHORING</span>
+                                                <span class="bg-amber-50 text-amber-600 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase">Medium</span>
+                                            </div>
+                                            <p class="text-slate-600 text-sm">12 ranges drifting on copy/paste.</p>
+                                        </div>
+                                        <button class="text-xs bg-slate-100 text-slate-600 border border-slate-200 px-3 py-1.5 rounded-md hover:bg-white transition">Review</button>
+                                    </div>
+                                </div>
+
+                                 <!-- Card 3: Hardcoded -->
+                                 <div class="group bg-white border border-blue-100 rounded-xl p-4 shadow-sm hover:shadow-md transition cursor-pointer relative overflow-hidden">
+                                    <div class="absolute left-0 top-0 h-full w-1 bg-blue-500"></div>
+                                    <div class="flex justify-between items-start">
+                                        <div>
+                                            <div class="flex items-center gap-2 mb-1">
+                                                <span class="text-blue-600 font-bold text-sm">R5: HARDCODED</span>
+                                                <span class="bg-blue-50 text-blue-600 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase">Advice</span>
+                                            </div>
+                                            <p class="text-slate-600 text-sm">36 "Magic Numbers" detected.</p>
+                                        </div>
+                                        <button class="text-xs bg-slate-100 text-slate-600 border border-slate-200 px-3 py-1.5 rounded-md hover:bg-white transition">Review</button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Snapshot Footer -->
+                            <div class="mt-4 pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-400">
+                                <span><i data-lucide="camera" class="w-3 h-3 inline mr-1"></i> Snapshot taken 2m ago</span>
+                                <span class="hover:text-emerald-600 cursor-pointer">Restore</span>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Demo Video (Placeholder) -->
+    <section id="demo" class="bg-white py-20 border-y border-slate-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-10 items-center">
+                <div>
+                    <p class="text-sm font-semibold text-emerald-700 uppercase tracking-widest mb-3">Demo</p>
+                    <h2 class="text-3xl font-bold text-slate-900 mb-4">See SheetSage in action</h2>
+                    <p class="text-lg text-slate-600 leading-relaxed">
+                        A short walkthrough of the scan → review → fix → restore workflow.
+                    </p>
+                    <div class="mt-6 flex flex-col sm:flex-row flex-wrap gap-3">
+                        <a href="#install" class="inline-flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white px-5 py-3 rounded-lg font-bold transition shadow-lg shadow-emerald-200">
+                            <i data-lucide="download-cloud" class="w-5 h-5" aria-hidden="true"></i>
+                            Install (soon)
+                        </a>
+                        <a href="mailto:hello@sheetsage.co.nz" class="inline-flex items-center justify-center gap-2 bg-white hover:bg-slate-50 text-slate-700 border border-slate-300 px-5 py-3 rounded-lg font-bold transition">
+                            <i data-lucide="mail" class="w-5 h-5" aria-hidden="true"></i>
+                            Request a demo
+                        </a>
+                    </div>
+                    <p class="mt-3 text-sm text-slate-500">When you have the Marketplace listing URL, update the “Install” button.</p>
+                </div>
+
+                <div>
+                    <!-- DEMO_VIDEO_PLACEHOLDER_START -->
+                    <div class="relative aspect-video rounded-2xl overflow-hidden border border-slate-200 shadow-lg bg-slate-100">
+                        <video class="w-full h-full object-cover" controls preload="metadata" playsinline poster="assets/demo-poster.svg">
+                            <source src="assets/demo.mp4" type="video/mp4" />
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <!-- DEMO_VIDEO_PLACEHOLDER_END -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Proof / Stats -->
+    <section class="bg-white py-12 border-y border-slate-100">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <p class="text-sm font-semibold text-slate-400 uppercase tracking-widest mb-8">Why Analysts Trust SheetSage</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="p-4">
+                    <div class="text-4xl font-bold text-slate-900 mb-2">5+ Rules</div>
+                    <div class="text-slate-500">Covering exact matches, anchoring, and hardcoded values.</div>
+                </div>
+                <div class="p-4">
+                    <div class="text-4xl font-bold text-slate-900 mb-2">1-Click Fix</div>
+                    <div class="text-slate-500">Safely patch 1,000+ formula errors instantly.</div>
+                </div>
+                <div class="p-4">
+                    <div class="text-4xl font-bold text-slate-900 mb-2">100% Local</div>
+                    <div class="text-slate-500">Code runs in your sheet. No data exfiltration.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Feature Deep Dive -->
+    <section id="features" class="py-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl font-bold text-slate-900 mb-4">It's not just a spell-checker. It's an auditor.</h2>
+                <p class="text-lg text-slate-600">Most errors in financial models come from lookup failures and formula drift. SheetSage targets the root causes.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Feature 1 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 hover:shadow-lg transition group">
+                    <div class="w-12 h-12 bg-red-50 text-red-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition">
+                        <i data-lucide="search" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">VLOOKUP Hygiene</h3>
+                    <p class="text-slate-600 leading-relaxed">
+                        Detects missing <code>FALSE</code> arguments that cause approximate matching disasters. Also flags invalid column indices.
+                    </p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 hover:shadow-lg transition group">
+                    <div class="w-12 h-12 bg-amber-50 text-amber-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition">
+                        <i data-lucide="anchor" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">Drift Protection</h3>
+                    <p class="text-slate-600 leading-relaxed">
+                        Finds lookup ranges like <code>A1:B10</code> that lack <code>$</code> anchors, preventing them from shifting when you copy formulas down.
+                    </p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 hover:shadow-lg transition group">
+                    <div class="w-12 h-12 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition">
+                        <i data-lucide="wand-2" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">Magic Number Detection</h3>
+                    <p class="text-slate-600 leading-relaxed">
+                        Spot hardcoded thresholds (e.g., <code>* 1.05</code>) buried in formulas. Extract them to assumption cells for better maintainability.
+                    </p>
+                </div>
+
+                 <!-- Feature 4 -->
+                 <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 hover:shadow-lg transition group">
+                    <div class="w-12 h-12 bg-emerald-50 text-emerald-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition">
+                        <i data-lucide="layers" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">Smart Clustering</h3>
+                    <p class="text-slate-600 leading-relaxed">
+                        Don't fix 5,000 rows one by one. SheetSage groups repeated formulas into a single "Cluster," letting you fix the pattern instantly.
+                    </p>
+                </div>
+
+                <!-- Feature 5 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 hover:shadow-lg transition group">
+                    <div class="w-12 h-12 bg-purple-50 text-purple-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition">
+                        <i data-lucide="history" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">Snapshot & Restore</h3>
+                    <p class="text-slate-600 leading-relaxed">
+                        Every fix creates a hidden snapshot. If a fix breaks your logic, hit "Restore" to revert instantly. Zero risk refactoring.
+                    </p>
+                </div>
+
+                <!-- Feature 6 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 hover:shadow-lg transition group">
+                    <div class="w-12 h-12 bg-slate-100 text-slate-700 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition">
+                        <i data-lucide="lock" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">Privacy First</h3>
+                    <p class="text-slate-600 leading-relaxed">
+                        Built on Apps Script. Analysis happens within your Google session. No data, formulas, or cell values are sent to external servers.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- How it Works Step-by-Step -->
+    <section id="how-it-works" class="py-24 bg-slate-50 border-t border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-slate-900 text-center mb-16">Audit your workbook in 3 steps</h2>
+            
+            <div class="grid md:grid-cols-3 gap-12 text-center relative">
+                <!-- Connector Line (Desktop) -->
+                <div class="hidden md:block absolute top-12 left-[16%] right-[16%] h-0.5 bg-slate-200 -z-10"></div>
+
+                <!-- Step 1 -->
+                <div>
+                    <div class="w-24 h-24 bg-white border-4 border-emerald-100 text-emerald-600 rounded-full flex items-center justify-center text-3xl font-bold mx-auto mb-6 shadow-sm">1</div>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2">Launch & Scan</h3>
+                    <p class="text-slate-600">Open Extensions > SheetSage. Click "Scan Workbook" to analyze every formula in seconds.</p>
+                </div>
+
+                <!-- Step 2 -->
+                <div>
+                    <div class="w-24 h-24 bg-white border-4 border-emerald-100 text-emerald-600 rounded-full flex items-center justify-center text-3xl font-bold mx-auto mb-6 shadow-sm">2</div>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2">Review Priorities</h3>
+                    <p class="text-slate-600">See your Health Score. Issues are ranked by risk and clustered by formula pattern.</p>
+                </div>
+
+                <!-- Step 3 -->
+                <div>
+                    <div class="w-24 h-24 bg-white border-4 border-emerald-100 text-emerald-600 rounded-full flex items-center justify-center text-3xl font-bold mx-auto mb-6 shadow-sm">3</div>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2">Fix with Confidence</h3>
+                    <p class="text-slate-600">Apply auto-fixes for VLOOKUPs or anchoring. Use guidance to refactor hardcoded values.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Privacy Policy -->
+    <section id="privacy" class="py-24 bg-white border-t border-slate-200">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-10">
+                <h2 class="text-3xl font-bold text-slate-900">Privacy Policy</h2>
+                <p class="mt-3 text-slate-600 text-lg">Enterprise-friendly by design: audit locally, keep control, and share only what you choose.</p>
+                <p class="mt-2 text-sm text-slate-500">Effective date: <span class="font-semibold">30 December 2025</span></p>
+            </div>
+
+            <!-- Privacy at a glance -->
+            <div class="bg-slate-50 border border-slate-200 rounded-2xl p-6 mb-10">
+                <h3 class="text-lg font-bold text-slate-900 mb-3">Privacy at a glance</h3>
+                <ul class="space-y-2 text-slate-700">
+                    <li class="flex gap-2"><span class="text-emerald-600 font-bold">✓</span><span><span class="font-semibold">Runs inside Google Sheets</span> (Apps Script) under your Google session.</span></li>
+                    <li class="flex gap-2"><span class="text-emerald-600 font-bold">✓</span><span><span class="font-semibold">No spreadsheet content is sent to our servers by default</span>.</span></li>
+                    <li class="flex gap-2"><span class="text-emerald-600 font-bold">✓</span><span><span class="font-semibold">Snapshots stay in your workbook</span> (hidden snapshot sheet) so restores are instant.</span></li>
+                    <li class="flex gap-2"><span class="text-emerald-600 font-bold">✓</span><span><span class="font-semibold">Local-only metrics</span> (optional): stored in Google Apps Script properties; <span class="font-semibold">no formulas, sheet names, or cell addresses</span>.</span></li>
+                    <li class="flex gap-2"><span class="text-emerald-600 font-bold">✓</span><span><span class="font-semibold">You control sharing</span>: nothing leaves unless you copy/export a summary or send info to support.</span></li>
+                </ul>
+            </div>
+
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 mb-10">
+                <h3 class="text-lg font-bold text-slate-900 mb-2">Read the full policy</h3>
+                <p class="text-slate-700">The complete Privacy Policy and Terms are available as standalone pages.</p>
+                <div class="mt-4 flex flex-col sm:flex-row gap-3">
+                    <a href="privacy.html" class="inline-flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 rounded-lg font-semibold transition">
+                        <i data-lucide="file-text" class="w-4 h-4"></i>
+                        Privacy Policy
+                    </a>
+                    <a href="terms.html" class="inline-flex items-center justify-center gap-2 bg-white hover:bg-slate-50 text-slate-700 border border-slate-300 px-4 py-2 rounded-lg font-semibold transition">
+                        <i data-lucide="scale" class="w-4 h-4"></i>
+                        Terms
+                    </a>
+                    <a href="mailto:hello@sheetsage.co.nz" class="inline-flex items-center justify-center gap-2 bg-white hover:bg-slate-50 text-slate-700 border border-slate-300 px-4 py-2 rounded-lg font-semibold transition">
+                        <i data-lucide="mail" class="w-4 h-4"></i>
+                        Contact
+                    </a>
+                </div>
+            </div>
+
+            <!-- Full policy (readable, enterprise-friendly) -->
+            <div class="hidden space-y-10 text-slate-700 leading-relaxed">
+
+                <div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">1) Who we are</h3>
+                    <p><span class="font-semibold">SheetSage</span> (“we”, “us”) is a Google Sheets add-on that scans a workbook for risky formula patterns and provides safer fixes with rollback. For privacy questions, contact <span class="font-semibold">hello@sheetsage.co.nz</span>.</p>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">2) Scope</h3>
+                    <p>This Privacy Policy applies to the SheetSage add-on, and our website/documentation. It does not govern Google’s handling of your data inside Google Workspace. Your use of Google Sheets, Drive, and Apps Script is subject to Google’s own terms and privacy policies.</p>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">3) Roles (enterprise context)</h3>
+                    <p>In most enterprise deployments, <span class="font-semibold">you (or your organization) are the Data Controller</span> for workbook content, and SheetSage acts as a <span class="font-semibold">Data Processor / Service Provider</span> to provide the add-on’s functionality. If your procurement process requires it, we can provide a <span class="font-semibold">Data Processing Addendum (DPA)</span> upon request.</p>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">4) What SheetSage processes</h3>
+
+                    <div class="mt-4 space-y-5">
+                        <div class="bg-white border border-slate-200 rounded-2xl p-6">
+                            <h4 class="font-bold text-slate-900 mb-2">A) Workbook content (processed locally)</h4>
+                            <p>To scan and fix issues, SheetSage may read workbook formulas and ranges and may write fixes you initiate. Processing happens inside your Google environment.</p>
+                            <ul class="list-disc ml-6 mt-3 space-y-1">
+                                <li>SheetSage scans formulas to evaluate rules (e.g., lookup hygiene, anchoring, and hardcoded constants).</li>
+                                <li>Some checks intentionally scan <span class="font-semibold">A1 formulas</span> (not R1C1) to reduce false positives; R1C1 is used primarily to cluster “copied-down” patterns.</li>
+                                <li>SheetSage does not require reading the entire workbook’s values to operate; it focuses on formulas and the minimum context needed to apply the selected fix.</li>
+                            </ul>
+                        </div>
+
+                        <div class="bg-white border border-slate-200 rounded-2xl p-6">
+                            <h4 class="font-bold text-slate-900 mb-2">B) Snapshots & restore (stored in your workbook)</h4>
+                            <p>When you apply a fix, SheetSage creates a restorable snapshot in a hidden sheet (e.g., <code class="px-1 py-0.5 bg-slate-100 rounded">SheetSage_SNAPSHOT</code>) so you can revert changes if needed. Snapshots live in the workbook, under your Google access controls.</p>
+                        </div>
+
+                        <div class="bg-white border border-slate-200 rounded-2xl p-6">
+                            <h4 class="font-bold text-slate-900 mb-2">C) Local-only metrics (privacy-first)</h4>
+                            <p>SheetSage may maintain best-effort product metrics designed to stay local:</p>
+                            <ul class="list-disc ml-6 mt-3 space-y-1">
+                                <li><span class="font-semibold">Per-user</span> metrics in Apps Script <span class="font-semibold">User Properties</span></li>
+                                <li><span class="font-semibold">Workbook-level</span> adoption metrics in Apps Script <span class="font-semibold">Document Properties</span></li>
+                                <li><span class="font-semibold">No formulas, sheet names, or cell addresses</span> are stored as metrics.</li>
+                                <li><span class="font-semibold">Nothing is sent anywhere by default</span>; data only leaves if you copy/export a summary or share it with support.</li>
+                            </ul>
+                        </div>
+
+                        <div class="bg-white border border-slate-200 rounded-2xl p-6">
+                            <h4 class="font-bold text-slate-900 mb-2">D) Support data (only if you choose to share)</h4>
+                            <p>If you contact support, we’ll process what you send us (e.g., your email, message content, screenshots, logs, or sample formulas). We use it only to resolve your request and improve reliability.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">5) What we do not do</h3>
+                    <ul class="list-disc ml-6 space-y-1">
+                        <li>We do not sell your personal information.</li>
+                        <li>We do not transmit your spreadsheet’s cell values or formulas to our servers by default.</li>
+                        <li>We do not run advertising-based profiling on your workbook content.</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">6) Subprocessors & third parties</h3>
+                    <p>SheetSage runs on Google Workspace and Apps Script infrastructure. Google is a core platform provider for the add-on. If we introduce additional subprocessors (e.g., for billing, support, or error monitoring), we will publish an up-to-date list and update this Policy as required.</p>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">7) Data retention</h3>
+                    <ul class="list-disc ml-6 space-y-1">
+                        <li><span class="font-semibold">Workbook content:</span> processed locally; not stored on our servers by default.</li>
+                        <li><span class="font-semibold">Snapshots:</span> stored in your workbook and retained according to your workbook’s lifecycle and your Google policies.</li>
+                        <li><span class="font-semibold">Support data:</span> retained only as long as necessary to resolve issues and meet legal/operational requirements (typically <span class="font-semibold">as needed</span>).</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">8) Security</h3>
+                    <p>We apply reasonable technical and organizational measures designed to protect the information we process (e.g., access controls for support systems). Workbooks and snapshots remain protected by your Google account and Workspace controls. No method of transmission or storage is 100% secure, but we work to maintain appropriate safeguards.</p>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">9) Your choices & controls</h3>
+                    <ul class="list-disc ml-6 space-y-1">
+                        <li>You can uninstall SheetSage at any time.</li>
+                        <li>You can review and revoke permissions in your Google account settings.</li>
+                        <li>You control whether to share any summaries/logs with support.</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">10) International transfers</h3>
+                    <p>If support data is processed outside your country, we will take steps to apply appropriate safeguards where required (e.g., contractual protections).</p>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">11) Your privacy rights</h3>
+                    <p>Depending on your jurisdiction, you may have rights to access, correct, delete, or restrict processing of your personal information. To submit a request, contact <span class="font-semibold">hello@sheetsage.co.nz</span>. We may need to verify your identity.</p>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">12) Changes to this policy</h3>
+                    <p>We may update this Policy from time to time. We will post the updated version and revise the effective date above. If changes are material, we will provide additional notice where required.</p>
+                </div>
+
+                <div class="bg-slate-50 border border-slate-200 rounded-2xl p-6">
+                    <h3 class="text-lg font-bold text-slate-900 mb-2">Contact</h3>
+                    <p class="text-slate-700">Email: <span class="font-semibold">hello@sheetsage.co.nz</span><br>
+                    Company: <span class="font-semibold">SheetSage</span><br>
+                    Address: <span class="font-semibold">New Zealand</span></p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="install" class="py-24 bg-slate-900 text-white relative overflow-hidden">
+        <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMiIgY3k9IjIiIHI9IjIiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC4wNSkiLz48L3N2Zz4=')] opacity-20"></div>
+        <div class="max-w-4xl mx-auto px-4 text-center relative z-10">
+            <h2 class="text-4xl font-bold mb-6">Install SheetSage</h2>
+            <p class="text-xl text-slate-300 mb-10">The Google Workspace Marketplace listing link isn't set yet. When it's ready, this button will point to the install page.</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#install" class="bg-emerald-500 hover:bg-emerald-600 text-white px-8 py-4 rounded-lg font-bold text-lg transition shadow-lg shadow-emerald-900/50" aria-disabled="true">
+                    Install (coming soon)
+                </a>
+                <a href="mailto:hello@sheetsage.co.nz" class="bg-white/10 hover:bg-white/15 text-white px-8 py-4 rounded-lg font-bold text-lg transition border border-white/20">
+                    Contact
+                </a>
+            </div>
+            <p class="mt-6 text-sm text-slate-400">Requires Google Sheets - No credit card required</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-200 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+                <a class="flex items-center gap-2" href="index.html">
+                    <div class="w-6 h-6 bg-emerald-600 rounded flex items-center justify-center text-white font-bold text-xs" aria-hidden="true">S</div>
+                    <span class="font-bold text-slate-800">SheetSage</span>
+                </a>
+                <div class="flex flex-wrap justify-center gap-x-8 gap-y-2 text-sm text-slate-500">
+                    <a href="#how-it-works" class="hover:text-emerald-600 transition">How it Works</a>
+                    <a href="privacy.html" class="hover:text-emerald-600 transition">Privacy</a>
+                    <a href="terms.html" class="hover:text-emerald-600 transition">Terms</a>
+                    <a href="mailto:hello@sheetsage.co.nz" class="hover:text-emerald-600 transition">Contact</a>
+                </div>
+                <div class="text-sm text-slate-400">&copy; <span data-year></span> SheetSage. All rights reserved.</div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

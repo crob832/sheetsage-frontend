@@ -1,0 +1,14 @@
+{
+  "name": "sheetsage-frontend",
+  "private": true,
+  "devDependencies": {
+    "autoprefixer": "10.4.20",
+    "postcss": "8.4.49",
+    "tailwindcss": "3.4.17"
+  },
+  "scripts": {
+    "build:css": "tailwindcss -c tailwind.config.js -i assets/tailwind.input.css -o assets/tailwind.css --minify",
+    "build": "npm run build:css && node scripts/build-dist.mjs",
+    "dev": "tailwindcss -c tailwind.config.js -i assets/tailwind.input.css -o assets/tailwind.css --watch"
+  }
+}
