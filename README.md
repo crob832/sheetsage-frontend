@@ -25,7 +25,7 @@ Then visit `http://localhost:5173/`.
 - The site avoids runtime CDN dependencies for CSS/icons:
   - Tailwind is prebuilt into `assets/tailwind.css`
   - Lucide (v0.562.0) is served locally from `assets/vendor/lucide.min.js`
-- Install links are placeholders until a Marketplace URL is available.
+- Install links point to the Google Workspace Marketplace listing.
 - Shared assets:
   - `assets/tailwind.css`
   - `assets/site.css`
