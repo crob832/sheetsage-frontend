@@ -1,0 +1,348 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pricing | SheetSage</title>
+    <meta
+      name="description"
+      content="Scan Google Sheets for risky formulas. Start free. Upgrade to Pro to fix everything in one click, with automatic snapshots and rollback."
+    />
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="assets/tailwind.css" />
+    <link rel="stylesheet" href="assets/site.css" />
+    <script src="assets/vendor/lucide.min.js" defer></script>
+    <script src="assets/site.js" defer></script>
+  </head>
+
+  <body class="bg-slate-50 text-slate-900 antialiased">
+    <a
+      href="#content"
+      class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[60] focus:bg-white focus:border focus:border-emerald-200 focus:text-emerald-700 focus:px-4 focus:py-2 focus:rounded-lg focus:shadow"
+      >Skip to content</a
+    >
+
+    <nav class="fixed w-full z-50 bg-white/80 backdrop-blur-md border-b border-slate-200">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+          <a href="index.html" class="flex items-center gap-2">
+            <div
+              class="w-8 h-8 bg-emerald-600 rounded-lg flex items-center justify-center text-white font-bold text-xl"
+              aria-hidden="true"
+            >
+              S
+            </div>
+            <span class="font-bold text-xl tracking-tight text-slate-800">SheetSage</span>
+          </a>
+
+          <div class="hidden md:flex items-center space-x-8">
+            <a href="index.html#features" class="text-slate-600 hover:text-emerald-600 font-medium transition"
+              >Features</a
+            >
+            <a href="index.html#how-it-works" class="text-slate-600 hover:text-emerald-600 font-medium transition"
+              >How it Works</a
+            >
+            <a href="index.html#demo" class="text-slate-600 hover:text-emerald-600 font-medium transition">Demo</a>
+            <a href="pricing.html" class="text-emerald-700 font-semibold">Pricing</a>
+            <a href="privacy.html" class="text-slate-600 hover:text-emerald-600 font-medium transition">Privacy</a>
+            <a href="terms.html" class="text-slate-600 hover:text-emerald-600 font-medium transition">Terms</a>
+          </div>
+
+          <div class="flex items-center gap-2">
+            <a
+              href="https://workspace.google.com/marketplace/app/sheetsage/115342178236?flow_type=2"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 sm:px-5 rounded-full font-medium transition shadow-lg shadow-emerald-200"
+              >Install Free</a
+            >
+            <button
+              id="mobileMenuButton"
+              type="button"
+              class="md:hidden inline-flex items-center justify-center w-10 h-10 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 transition"
+              aria-controls="mobileMenu"
+              aria-expanded="false"
+              aria-label="Open menu"
+            >
+              <i data-lucide="menu" class="w-5 h-5 text-slate-700" aria-hidden="true"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div id="mobileMenu" class="md:hidden hidden border-t border-slate-200 bg-white">
+        <div class="max-w-7xl mx-auto px-4 py-4 space-y-3">
+          <a href="index.html#features" class="block text-slate-700 font-medium hover:text-emerald-600 transition"
+            >Features</a
+          >
+          <a href="index.html#how-it-works" class="block text-slate-700 font-medium hover:text-emerald-600 transition"
+            >How it Works</a
+          >
+          <a href="index.html#demo" class="block text-slate-700 font-medium hover:text-emerald-600 transition">Demo</a>
+          <a href="pricing.html" class="block text-slate-700 font-medium hover:text-emerald-600 transition">Pricing</a>
+          <a href="privacy.html" class="block text-slate-700 font-medium hover:text-emerald-600 transition">Privacy</a>
+          <a href="terms.html" class="block text-slate-700 font-medium hover:text-emerald-600 transition">Terms</a>
+          <a
+            href="https://workspace.google.com/marketplace/app/sheetsage/115342178236?flow_type=2"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="block text-slate-700 font-medium hover:text-emerald-600 transition"
+            >Install Free</a
+          >
+          <a href="mailto:hello@sheetsage.co" class="block text-slate-700 font-medium hover:text-emerald-600 transition"
+            >Contact</a
+          >
+        </div>
+      </div>
+    </nav>
+
+    <div
+      id="mobileMenuOverlay"
+      class="md:hidden hidden fixed inset-0 bg-slate-900/30 backdrop-blur-sm z-40"
+      aria-hidden="true"
+    ></div>
+
+    <main id="content" class="pt-28 pb-20">
+      <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto">
+          <p class="text-sm font-semibold text-emerald-700 uppercase tracking-widest">Pricing</p>
+          <h1 class="text-5xl md:text-6xl font-extrabold tracking-tight text-slate-900 mt-4">Scan first. Sleep better.</h1>
+          <p class="mt-5 text-lg text-slate-600">
+            SheetSage finds risky formulas in Google Sheets and helps you fix them safely — with automatic snapshots and rollback.
+          </p>
+
+          <div class="mt-8 flex flex-col sm:flex-row justify-center gap-3">
+            <a
+              href="https://workspace.google.com/marketplace/app/sheetsage/115342178236?flow_type=2"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-3 rounded-lg font-bold transition shadow-lg shadow-emerald-200"
+            >
+              <i data-lucide="download-cloud" class="w-5 h-5" aria-hidden="true"></i>
+              Install Free
+            </a>
+            <a
+              href="#plans"
+              class="inline-flex items-center justify-center gap-2 bg-white hover:bg-slate-50 text-slate-700 border border-slate-300 px-6 py-3 rounded-lg font-bold transition"
+            >
+              <i data-lucide="sparkles" class="w-5 h-5" aria-hidden="true"></i>
+              See plans
+            </a>
+          </div>
+
+          <div class="mt-6 flex flex-wrap justify-center gap-3 text-sm text-slate-500">
+            <span class="inline-flex items-center gap-2 bg-white border border-slate-200 rounded-full px-4 py-2">
+              <i data-lucide="sheet" class="w-4 h-4 text-emerald-700" aria-hidden="true"></i>
+              Works inside Google Sheets
+            </span>
+            <span class="inline-flex items-center gap-2 bg-white border border-slate-200 rounded-full px-4 py-2">
+              <i data-lucide="shield" class="w-4 h-4 text-emerald-700" aria-hidden="true"></i>
+              Current-only permissions
+            </span>
+            <span class="inline-flex items-center gap-2 bg-white border border-slate-200 rounded-full px-4 py-2">
+              <i data-lucide="lock" class="w-4 h-4 text-emerald-700" aria-hidden="true"></i>
+              No spreadsheet content sent externally
+            </span>
+          </div>
+        </div>
+      </section>
+
+      <section id="plans" class="mt-16 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-3 gap-6">
+          <div class="bg-white border border-slate-200 rounded-2xl p-8 shadow-sm">
+            <div class="flex items-center justify-between">
+              <h2 class="text-xl font-extrabold text-slate-900">Free</h2>
+              <span class="text-sm font-semibold text-slate-500">Start here</span>
+            </div>
+            <p class="mt-3 text-slate-600">Discover issues and understand risk.</p>
+            <div class="mt-6">
+              <div class="text-4xl font-extrabold text-slate-900">$0</div>
+              <div class="text-sm text-slate-500 mt-1">No credit card required</div>
+            </div>
+            <ul class="mt-6 space-y-3 text-slate-700">
+              <li class="flex gap-3"><i data-lucide="check" class="w-5 h-5 text-emerald-600 mt-0.5"></i><span>Unlimited scans + health score</span></li>
+              <li class="flex gap-3"><i data-lucide="check" class="w-5 h-5 text-emerald-600 mt-0.5"></i><span>Ranked clusters + explanations</span></li>
+              <li class="flex gap-3"><i data-lucide="check" class="w-5 h-5 text-emerald-600 mt-0.5"></i><span>Fix issues one-by-one (daily limit)</span></li>
+              <li class="flex gap-3"><i data-lucide="check" class="w-5 h-5 text-emerald-600 mt-0.5"></i><span>One-time Fix All token on first high-risk scan</span></li>
+              <li class="flex gap-3"><i data-lucide="check" class="w-5 h-5 text-emerald-600 mt-0.5"></i><span>Snapshots + restore (rollback)</span></li>
+            </ul>
+            <div class="mt-8">
+              <a
+                href="https://workspace.google.com/marketplace/app/sheetsage/115342178236?flow_type=2"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="w-full inline-flex items-center justify-center gap-2 bg-slate-900 hover:bg-slate-800 text-white px-6 py-3 rounded-lg font-bold transition"
+              >
+                Install Free
+              </a>
+              <p class="mt-3 text-xs text-slate-500">Upgrade anytime.</p>
+            </div>
+          </div>
+
+          <div class="bg-white border-2 border-emerald-600 rounded-2xl p-8 shadow-lg shadow-emerald-100 relative">
+            <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-emerald-600 text-white text-xs font-bold px-3 py-1 rounded-full">
+              Most popular
+            </div>
+            <div class="flex items-center justify-between">
+              <h2 class="text-xl font-extrabold text-slate-900">Pro</h2>
+              <span class="text-sm font-semibold text-emerald-700">Fix fast</span>
+            </div>
+            <p class="mt-3 text-slate-600">For people who want their time back and confidence in results.</p>
+            <div class="mt-6">
+              <div class="text-4xl font-extrabold text-slate-900">$12<span class="text-lg font-bold text-slate-500">/user/mo</span></div>
+              <div class="text-sm text-slate-500 mt-1">Or $99/year (annual discount)</div>
+            </div>
+            <ul class="mt-6 space-y-3 text-slate-700">
+              <li class="flex gap-3"><i data-lucide="check-circle" class="w-5 h-5 text-emerald-600 mt-0.5"></i><span>Everything in Free</span></li>
+              <li class="flex gap-3"><i data-lucide="check-circle" class="w-5 h-5 text-emerald-600 mt-0.5"></i><span>Fix All (bulk fixes across clusters)</span></li>
+              <li class="flex gap-3"><i data-lucide="check-circle" class="w-5 h-5 text-emerald-600 mt-0.5"></i><span>Unlimited fixes/day</span></li>
+              <li class="flex gap-3"><i data-lucide="check-circle" class="w-5 h-5 text-emerald-600 mt-0.5"></i><span>Unlimited cluster size (no caps)</span></li>
+              <li class="flex gap-3"><i data-lucide="check-circle" class="w-5 h-5 text-emerald-600 mt-0.5"></i><span>Manage subscription in Stripe portal</span></li>
+            </ul>
+            <div class="mt-8">
+              <a
+                href="https://workspace.google.com/marketplace/app/sheetsage/115342178236?flow_type=2"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="w-full inline-flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-3 rounded-lg font-bold transition shadow-lg shadow-emerald-200"
+              >
+                Install Free (upgrade in-app)
+              </a>
+              <p class="mt-3 text-xs text-slate-500">Cancel anytime. Keep Free features forever.</p>
+            </div>
+          </div>
+
+          <div class="bg-white border border-slate-200 rounded-2xl p-8 shadow-sm">
+            <div class="flex items-center justify-between">
+              <h2 class="text-xl font-extrabold text-slate-900">Teams</h2>
+              <span class="text-sm font-semibold text-slate-500">Roadmap</span>
+            </div>
+            <p class="mt-3 text-slate-600">Governance features for shared spreadsheets and workspaces.</p>
+            <div class="mt-6">
+              <div class="text-4xl font-extrabold text-slate-900">Coming soon</div>
+              <div class="text-sm text-slate-500 mt-1">If you need this, tell us.</div>
+            </div>
+            <ul class="mt-6 space-y-3 text-slate-700">
+              <li class="flex gap-3"><i data-lucide="clock" class="w-5 h-5 text-slate-500 mt-0.5"></i><span>Scheduled scans + emailed summaries</span></li>
+              <li class="flex gap-3"><i data-lucide="clock" class="w-5 h-5 text-slate-500 mt-0.5"></i><span>Policy controls + strictness</span></li>
+              <li class="flex gap-3"><i data-lucide="clock" class="w-5 h-5 text-slate-500 mt-0.5"></i><span>Workspace rollups + reporting</span></li>
+              <li class="flex gap-3"><i data-lucide="clock" class="w-5 h-5 text-slate-500 mt-0.5"></i><span>Seat management</span></li>
+            </ul>
+            <div class="mt-8">
+              <a
+                href="mailto:hello@sheetsage.co"
+                class="w-full inline-flex items-center justify-center gap-2 bg-white hover:bg-slate-50 text-slate-700 border border-slate-300 px-6 py-3 rounded-lg font-bold transition"
+              >
+                Contact / Join waitlist
+              </a>
+              <p class="mt-3 text-xs text-slate-500">We’ll prioritize this based on demand.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="mt-16 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="bg-white border border-slate-200 rounded-2xl p-10">
+          <h2 class="text-3xl font-extrabold text-slate-900">Why Pro?</h2>
+          <p class="mt-3 text-slate-600 text-lg">Free finds issues. Pro fixes them fast — safely.</p>
+
+          <div class="mt-8 grid md:grid-cols-3 gap-6">
+            <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200">
+              <div class="text-sm font-bold text-slate-900">Time saved</div>
+              <p class="mt-2 text-slate-600">Stop fixing one-by-one. Batch fixes across clusters.</p>
+            </div>
+            <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200">
+              <div class="text-sm font-bold text-slate-900">Safety</div>
+              <p class="mt-2 text-slate-600">Every bulk change creates a snapshot so you can roll back.</p>
+            </div>
+            <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200">
+              <div class="text-sm font-bold text-slate-900">Confidence</div>
+              <p class="mt-2 text-slate-600">See health improvements after each scan and fix.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="mt-16 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="bg-white border border-slate-200 rounded-2xl p-10">
+          <h2 class="text-3xl font-extrabold text-slate-900">FAQs</h2>
+          <div class="mt-6 space-y-6">
+            <div>
+              <h3 class="text-lg font-bold text-slate-900">Is it safe to run Fix All?</h3>
+              <p class="mt-2 text-slate-600">Yes. SheetSage creates a snapshot first so you always have rollback.</p>
+            </div>
+            <div>
+              <h3 class="text-lg font-bold text-slate-900">Do you store my spreadsheet data?</h3>
+              <p class="mt-2 text-slate-600">
+                SheetSage is designed to keep spreadsheet content inside Sheets. Licensing checks send only an anonymous client ID.
+              </p>
+            </div>
+            <div>
+              <h3 class="text-lg font-bold text-slate-900">Can I cancel anytime?</h3>
+              <p class="mt-2 text-slate-600">Yes. Cancel anytime. Free features remain available.</p>
+            </div>
+            <div>
+              <h3 class="text-lg font-bold text-slate-900">What’s the difference between Free and Pro?</h3>
+              <p class="mt-2 text-slate-600">
+                Free = discover and fix within limits. Pro = batch fixes (Fix All) + unlimited volume + no caps.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="mt-16 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-6xl mx-auto bg-slate-900 text-white rounded-3xl overflow-hidden relative">
+          <div
+            class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMiIgY3k9IjIiIHI9IjIiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC4wNSkiLz48L3N2Zz4=')] opacity-20"
+          ></div>
+          <div class="relative z-10 p-10 text-center">
+            <h2 class="text-3xl md:text-4xl font-extrabold">Install SheetSage</h2>
+            <p class="mt-4 text-slate-300 text-lg">Now live on Google Workspace Marketplace. Install in a couple of clicks.</p>
+            <div class="mt-8 flex flex-col sm:flex-row justify-center gap-4">
+              <a
+                href="https://workspace.google.com/marketplace/app/sheetsage/115342178236?flow_type=2"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="bg-emerald-500 hover:bg-emerald-600 text-white px-8 py-4 rounded-lg font-bold text-lg transition shadow-lg shadow-emerald-900/50"
+              >
+                Install Free
+              </a>
+              <a
+                href="mailto:hello@sheetsage.co"
+                class="bg-white/10 hover:bg-white/15 text-white px-8 py-4 rounded-lg font-bold text-lg transition border border-white/20"
+              >
+                Contact
+              </a>
+            </div>
+            <p class="mt-6 text-sm text-slate-400">Requires Google Sheets</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="bg-white border-t border-slate-200 py-12">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+          <a href="index.html" class="flex items-center gap-2">
+            <div
+              class="w-6 h-6 bg-emerald-600 rounded flex items-center justify-center text-white font-bold text-xs"
+              aria-hidden="true"
+            >
+              S
+            </div>
+            <span class="font-bold text-slate-800">SheetSage</span>
+          </a>
+          <div class="flex flex-wrap justify-center gap-x-8 gap-y-2 text-sm text-slate-500">
+            <a href="pricing.html" class="hover:text-emerald-600 transition">Pricing</a>
+            <a href="index.html#how-it-works" class="hover:text-emerald-600 transition">How it Works</a>
+            <a href="privacy.html" class="hover:text-emerald-600 transition">Privacy</a>
+            <a href="terms.html" class="hover:text-emerald-600 transition">Terms</a>
+            <a href="mailto:hello@sheetsage.co" class="hover:text-emerald-600 transition">Contact</a>
+          </div>
+          <div class="text-sm text-slate-400">&copy; <span data-year></span> SheetSage. All rights reserved.</div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
