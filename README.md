@@ -5,6 +5,7 @@ Static website pages for SheetSage.
 ## Pages
 
 - `index.html` - homepage / marketing
+- `pricing.html` - pricing
 - `privacy.html` - privacy policy
 - `terms.html` - terms of service
 

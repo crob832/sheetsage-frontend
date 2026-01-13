@@ -4,7 +4,7 @@
 
 @layer components {
   .ss-pill-row {
-    @apply mt-10 flex flex-wrap justify-center lg:justify-start gap-x-3 gap-y-4 text-sm text-slate-500;
+    @apply mt-8 flex flex-wrap justify-center lg:justify-start gap-x-3 gap-y-3 text-sm text-slate-500;
   }
 
   .ss-pill {
@@ -16,15 +16,15 @@
   }
 
   .ss-plan-card {
-    @apply bg-white border border-slate-200 rounded-3xl p-8 sm:p-10 shadow-sm flex flex-col;
+    @apply bg-white border border-slate-200 rounded-2xl p-8 shadow-sm hover:shadow-lg transition flex flex-col;
   }
 
   .ss-plan-card-featured {
-    @apply bg-white border-2 border-emerald-600 rounded-3xl p-8 sm:p-10 shadow-xl shadow-emerald-100 relative flex flex-col;
+    @apply bg-white border-2 border-emerald-600 rounded-2xl p-8 shadow-lg shadow-emerald-100 hover:shadow-xl transition relative flex flex-col;
   }
 
   .ss-feature-list {
-    @apply space-y-4 text-slate-700 leading-relaxed;
+    @apply space-y-3 text-slate-600 text-sm leading-relaxed;
   }
 
   .ss-feature-item {
@@ -36,18 +36,18 @@
   }
 
   .ss-price-row {
-    @apply flex items-end gap-1;
+    @apply flex items-end gap-2;
   }
 
   .ss-price {
-    @apply text-5xl font-extrabold text-slate-900;
+    @apply text-4xl sm:text-5xl font-extrabold text-slate-900;
   }
 
   .ss-price-unit {
-    @apply text-lg font-bold text-slate-500 leading-none pb-1;
+    @apply text-base font-semibold text-slate-500 leading-none pb-1;
   }
 
   .ss-card-footer {
-    @apply mt-auto pt-8 border-t border-slate-100;
+    @apply mt-auto pt-6 border-t border-slate-100;
   }
 }
