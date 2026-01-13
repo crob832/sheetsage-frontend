@@ -2,3 +2,52 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+  .ss-pill-row {
+    @apply mt-10 flex flex-wrap justify-center lg:justify-start gap-x-3 gap-y-4 text-sm text-slate-500;
+  }
+
+  .ss-pill {
+    @apply inline-flex items-center gap-2 bg-white border border-slate-200 rounded-full px-4 py-2;
+  }
+
+  .ss-plan-grid {
+    @apply mt-12 grid gap-6 lg:grid-cols-3 lg:gap-8 items-stretch;
+  }
+
+  .ss-plan-card {
+    @apply bg-white border border-slate-200 rounded-3xl p-8 sm:p-10 shadow-sm flex flex-col;
+  }
+
+  .ss-plan-card-featured {
+    @apply bg-white border-2 border-emerald-600 rounded-3xl p-8 sm:p-10 shadow-xl shadow-emerald-100 relative flex flex-col;
+  }
+
+  .ss-feature-list {
+    @apply space-y-4 text-slate-700 leading-relaxed;
+  }
+
+  .ss-feature-item {
+    @apply flex items-start gap-3;
+  }
+
+  .ss-feature-icon {
+    @apply w-5 h-5 shrink-0 mt-0.5;
+  }
+
+  .ss-price-row {
+    @apply flex items-end gap-1;
+  }
+
+  .ss-price {
+    @apply text-5xl font-extrabold text-slate-900;
+  }
+
+  .ss-price-unit {
+    @apply text-lg font-bold text-slate-500 leading-none pb-1;
+  }
+
+  .ss-card-footer {
+    @apply mt-auto pt-8 border-t border-slate-100;
+  }
+}
