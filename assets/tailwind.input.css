@@ -10,44 +10,4 @@
   .ss-pill {
     @apply inline-flex items-center gap-2 bg-white border border-slate-200 rounded-full px-4 py-2;
   }
-
-  .ss-plan-grid {
-    @apply mt-12 grid gap-6 lg:grid-cols-3 lg:gap-8 items-stretch;
-  }
-
-  .ss-plan-card {
-    @apply bg-white border border-slate-200 rounded-2xl p-8 shadow-sm hover:shadow-lg transition flex flex-col;
-  }
-
-  .ss-plan-card-featured {
-    @apply bg-white border-2 border-emerald-600 rounded-2xl p-8 shadow-lg shadow-emerald-100 hover:shadow-xl transition relative flex flex-col;
-  }
-
-  .ss-feature-list {
-    @apply space-y-3 text-slate-600 text-sm leading-relaxed;
-  }
-
-  .ss-feature-item {
-    @apply flex items-start gap-3;
-  }
-
-  .ss-feature-icon {
-    @apply w-5 h-5 shrink-0 mt-0.5;
-  }
-
-  .ss-price-row {
-    @apply flex items-end gap-2;
-  }
-
-  .ss-price {
-    @apply text-4xl sm:text-5xl font-extrabold text-slate-900;
-  }
-
-  .ss-price-unit {
-    @apply text-base font-semibold text-slate-500 leading-none pb-1;
-  }
-
-  .ss-card-footer {
-    @apply mt-auto pt-6 border-t border-slate-100;
-  }
 }

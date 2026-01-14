@@ -175,7 +175,7 @@
                       S
                     </div>
                     <div>
-                      <div class="font-semibold text-slate-900 leading-tight">Workbook Scan</div>
+                      <div class="font-semibold text-slate-900 leading-tight">SheetSage</div>
                       <div class="text-xs text-slate-500">Ranked issues + safe fixes</div>
                     </div>
                   </div>
@@ -186,29 +186,33 @@
 
                 <div class="p-6">
                   <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div class="bg-slate-50 border border-slate-200 rounded-2xl p-4">
+                    <div class="bg-slate-50 border border-slate-200 rounded-2xl p-5">
                       <div class="text-xs text-slate-500">Formula health</div>
                       <div class="mt-2 text-4xl font-extrabold text-slate-900">42</div>
                       <div class="mt-1 text-xs text-slate-500">Poor (before fixes)</div>
                     </div>
-                    <div class="bg-slate-50 border border-slate-200 rounded-2xl p-4">
+                    <div class="bg-slate-50 border border-slate-200 rounded-2xl p-5">
                       <div class="text-xs text-slate-500">Top risk cluster</div>
                       <div class="mt-2 text-sm font-extrabold text-slate-900">R1: VLOOKUP EXACT</div>
                       <div class="mt-1 text-xs text-slate-500">Missing FALSE argument</div>
                     </div>
                   </div>
 
-                  <div class="mt-5 bg-white border border-slate-200 rounded-2xl p-4">
-                    <div class="flex items-center justify-between gap-4">
-                      <div>
-                        <div class="text-sm font-extrabold text-slate-900">Fix All</div>
-                        <p class="mt-1 text-sm text-slate-600">Apply safer fixes with snapshot rollback.</p>
+                  <div class="mt-6 pt-6 border-t border-slate-100">
+                    <div class="bg-white border border-slate-200 rounded-2xl p-5 shadow-sm">
+                      <div class="flex items-center justify-between gap-4">
+                        <div>
+                          <div class="text-sm font-extrabold text-slate-900">Fix All</div>
+                          <p class="mt-1 text-sm text-slate-600">Apply safer fixes with snapshot rollback.</p>
+                        </div>
+                        <div class="text-xs font-bold bg-emerald-600 text-white px-4 py-2 rounded-lg">Upgrade</div>
                       </div>
-                      <div class="text-xs font-bold bg-emerald-600 text-white px-4 py-2 rounded-lg">Upgrade</div>
                     </div>
                   </div>
 
-                  <div class="mt-4 flex items-center justify-between text-xs text-slate-500">
+                  <div
+                    class="mt-6 -mx-6 -mb-6 px-6 py-4 bg-slate-50 border-t border-slate-200 flex items-center justify-between text-xs text-slate-500"
+                  >
                     <span class="inline-flex items-center gap-2">
                       <i data-lucide="camera" class="w-4 h-4 text-emerald-600" aria-hidden="true"></i>
                       Snapshot first
@@ -231,146 +235,177 @@
             <p class="text-sm font-semibold text-emerald-700 uppercase tracking-widest">Plans</p>
             <h2 class="text-3xl md:text-4xl font-bold text-slate-900">Start free. Upgrade when you need speed.</h2>
             <p class="text-lg text-slate-600 leading-relaxed">
-              Free helps you discover and understand risk. Pro unlocks Fix All and removes limits when you are ready to fix at scale.
+              Free finds risk. Pro fixes it in bulk with snapshots + rollback. Enterprise adds governance and reporting for teams.
             </p>
           </div>
 
-          <div class="ss-plan-grid">
-          <div class="ss-plan-card">
-            <div class="flex items-center justify-between">
-              <h3 class="text-xl font-bold text-slate-900">Free</h3>
-              <span class="text-sm font-semibold text-slate-500">Start here</span>
-            </div>
-            <p class="mt-4 text-slate-600 leading-relaxed">Discover issues and understand risk.</p>
-            <div class="mt-7">
-              <div class="ss-price">$0</div>
-              <div class="text-sm text-slate-500 mt-1">No credit card required</div>
-            </div>
-            <ul class="mt-8 ss-feature-list">
-              <li class="ss-feature-item">
-                <i data-lucide="check" class="ss-feature-icon text-emerald-600" aria-hidden="true"></i>
-                <span>Unlimited scans + health score</span>
-              </li>
-              <li class="ss-feature-item">
-                <i data-lucide="check" class="ss-feature-icon text-emerald-600" aria-hidden="true"></i>
-                <span>Ranked clusters + explanations</span>
-              </li>
-              <li class="ss-feature-item">
-                <i data-lucide="check" class="ss-feature-icon text-emerald-600" aria-hidden="true"></i>
-                <span>Fix issues one-by-one (daily limit)</span>
-              </li>
-              <li class="ss-feature-item">
-                <i data-lucide="check" class="ss-feature-icon text-emerald-600" aria-hidden="true"></i>
-                <span>One-time Fix All token on first high-risk scan</span>
-              </li>
-              <li class="ss-feature-item">
-                <i data-lucide="check" class="ss-feature-icon text-emerald-600" aria-hidden="true"></i>
-                <span>Snapshots + restore (rollback)</span>
-              </li>
-            </ul>
-            <div class="ss-card-footer">
-              <a
-                href="https://workspace.google.com/marketplace/app/sheetsage/115342178236?flow_type=2"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="w-full inline-flex items-center justify-center gap-2 bg-white hover:bg-slate-50 text-slate-700 border border-slate-300 px-6 py-3 rounded-lg font-bold transition"
-              >
-                Install Free
-              </a>
-              <p class="mt-3 text-xs text-slate-500">Upgrade anytime.</p>
-            </div>
-          </div>
+          <div class="mt-12 max-w-5xl mx-auto bg-white border border-slate-200 rounded-2xl shadow-sm overflow-hidden">
+            <div class="grid grid-cols-1 lg:grid-cols-3 divide-y divide-slate-200 lg:divide-y-0 lg:divide-x">
+              <!-- Free -->
+              <div class="p-8 sm:p-10 flex flex-col">
+                <p class="text-xs font-semibold uppercase tracking-widest text-slate-500">For individuals</p>
+                <h3 class="mt-2 text-3xl font-bold text-slate-900">Free</h3>
+                <p class="mt-2 text-slate-600">Discover issues and understand risk.</p>
 
-          <div class="ss-plan-card-featured">
-            <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-emerald-600 text-white text-xs font-bold px-3 py-1 rounded-full">
-              Most popular
-            </div>
-            <div class="flex items-center justify-between">
-              <h3 class="text-xl font-bold text-slate-900">Pro</h3>
-              <span class="text-sm font-semibold text-emerald-700">Fix fast</span>
-            </div>
-            <p class="mt-4 text-slate-600 leading-relaxed">For people who want their time back and confidence in results.</p>
-            <div class="mt-7">
-              <div class="ss-price-row">
-                <div class="ss-price">$12</div>
-                <div class="ss-price-unit">/user/mo</div>
+                <div class="mt-6">
+                  <div class="flex items-end gap-2">
+                    <div class="text-5xl font-extrabold text-slate-900">$0</div>
+                    <div class="text-sm font-semibold text-slate-500 pb-2">/month</div>
+                  </div>
+                  <p class="mt-2 text-sm text-slate-500">No credit card required</p>
+                </div>
+
+                <a
+                  href="https://workspace.google.com/marketplace/app/sheetsage/115342178236?flow_type=2"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="mt-6 inline-flex items-center justify-center gap-2 bg-white hover:bg-slate-50 text-slate-700 border border-slate-300 px-6 py-3 rounded-lg font-bold transition"
+                >
+                  Install Free
+                </a>
+
+                <div class="mt-8 pt-6 border-t border-slate-100">
+                  <p class="text-xs font-semibold text-slate-900">Understand risk</p>
+                  <ul class="mt-4 space-y-3 text-sm text-slate-600">
+                    <li class="flex items-start gap-3">
+                      <i data-lucide="check" class="w-4 h-4 mt-0.5 text-emerald-600 shrink-0" aria-hidden="true"></i>
+                      <span>Unlimited scans + health score</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                      <i data-lucide="check" class="w-4 h-4 mt-0.5 text-emerald-600 shrink-0" aria-hidden="true"></i>
+                      <span>Ranked clusters + explanations</span>
+                    </li>
+                  </ul>
+
+                  <p class="mt-6 text-xs font-semibold text-slate-900">Fix safely</p>
+                  <ul class="mt-4 space-y-3 text-sm text-slate-600">
+                    <li class="flex items-start gap-3">
+                      <i data-lucide="check" class="w-4 h-4 mt-0.5 text-emerald-600 shrink-0" aria-hidden="true"></i>
+                      <span>Fix issues one-by-one (daily limit)</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                      <i data-lucide="check" class="w-4 h-4 mt-0.5 text-emerald-600 shrink-0" aria-hidden="true"></i>
+                      <span>One-time Fix All token on first high-risk scan</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                      <i data-lucide="check" class="w-4 h-4 mt-0.5 text-emerald-600 shrink-0" aria-hidden="true"></i>
+                      <span>Snapshots + restore (rollback)</span>
+                    </li>
+                  </ul>
+                </div>
               </div>
-              <div class="text-sm text-slate-500 mt-1">Or $99/year (annual discount)</div>
-            </div>
-            <div class="mt-3 text-sm text-slate-600">Upgrade in-app when you click Fix All.</div>
-            <ul class="mt-8 ss-feature-list">
-              <li class="ss-feature-item">
-                <i data-lucide="check-circle" class="ss-feature-icon text-emerald-600" aria-hidden="true"></i>
-                <span>Everything in Free</span>
-              </li>
-              <li class="ss-feature-item">
-                <i data-lucide="check-circle" class="ss-feature-icon text-emerald-600" aria-hidden="true"></i>
-                <span>Fix All (bulk fixes across clusters)</span>
-              </li>
-              <li class="ss-feature-item">
-                <i data-lucide="check-circle" class="ss-feature-icon text-emerald-600" aria-hidden="true"></i>
-                <span>Unlimited fixes/day</span>
-              </li>
-              <li class="ss-feature-item">
-                <i data-lucide="check-circle" class="ss-feature-icon text-emerald-600" aria-hidden="true"></i>
-                <span>Unlimited cluster size (no caps)</span>
-              </li>
-              <li class="ss-feature-item">
-                <i data-lucide="check-circle" class="ss-feature-icon text-emerald-600" aria-hidden="true"></i>
-                <span>Manage subscription in Stripe portal</span>
-              </li>
-            </ul>
-            <div class="ss-card-footer">
-              <a
-                href="https://workspace.google.com/marketplace/app/sheetsage/115342178236?flow_type=2"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="w-full inline-flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-3 rounded-lg font-bold transition shadow-lg shadow-emerald-200"
-              >
-                Install Free (upgrade in-app)
-              </a>
-              <p class="mt-3 text-xs text-slate-500">Cancel anytime. Keep Free features forever.</p>
-            </div>
-          </div>
 
-          <div class="ss-plan-card">
-            <div class="flex items-center justify-between">
-              <h3 class="text-xl font-bold text-slate-900">Teams</h3>
-              <span class="text-sm font-semibold text-slate-500">Roadmap</span>
+              <!-- Pro -->
+              <div class="bg-emerald-50/40">
+                <div class="bg-emerald-600 text-white text-xs font-bold tracking-[0.2em] uppercase text-center py-2">
+                  Most popular
+                </div>
+                <div class="p-8 sm:p-10 flex flex-col">
+                  <p class="text-xs font-semibold uppercase tracking-widest text-slate-500">For power users</p>
+                  <div class="mt-2 flex items-center justify-between gap-4">
+                    <h3 class="text-3xl font-bold text-slate-900">Pro</h3>
+                    <span
+                      class="inline-flex items-center gap-2 text-xs font-semibold text-emerald-700 bg-white/70 border border-emerald-200 px-3 py-1 rounded-full"
+                    >
+                      <i data-lucide="zap" class="w-4 h-4" aria-hidden="true"></i>
+                      Fix fast
+                    </span>
+                  </div>
+                  <p class="mt-2 text-slate-600">For people who want their time back and confidence in results.</p>
+
+                  <div class="mt-6">
+                    <div class="flex items-end gap-2">
+                      <div class="text-5xl font-extrabold text-slate-900">$12</div>
+                      <div class="text-sm font-semibold text-slate-500 pb-2">/user/mo</div>
+                    </div>
+                    <p class="mt-2 text-sm text-slate-500">Or $99/year (annual discount)</p>
+                    <p class="mt-3 text-xs text-slate-500">Upgrade in-app when you click Fix All.</p>
+                    <p class="mt-2 text-xs text-slate-500">Most users upgrade the first time they hit Fix All.</p>
+                  </div>
+
+                  <a
+                    href="https://workspace.google.com/marketplace/app/sheetsage/115342178236?flow_type=2"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="mt-6 inline-flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-3 rounded-lg font-bold transition shadow-lg shadow-emerald-200"
+                  >
+                    Install Free (upgrade in-app)
+                  </a>
+                  <p class="mt-4 text-xs text-slate-500">Cancel anytime. Keep Free features forever.</p>
+
+                  <div class="mt-8 pt-6 border-t border-emerald-200/60">
+                    <p class="text-xs font-semibold text-slate-900">Everything in Free, plus</p>
+                    <ul class="mt-4 space-y-3 text-sm text-slate-600">
+                      <li class="flex items-start gap-3">
+                        <i data-lucide="check-circle" class="w-4 h-4 mt-0.5 text-emerald-600 shrink-0" aria-hidden="true"></i>
+                        <span>Fix All (bulk fixes across clusters)</span>
+                      </li>
+                      <li class="flex items-start gap-3">
+                        <i data-lucide="check-circle" class="w-4 h-4 mt-0.5 text-emerald-600 shrink-0" aria-hidden="true"></i>
+                        <span>Unlimited fixes/day</span>
+                      </li>
+                      <li class="flex items-start gap-3">
+                        <i data-lucide="check-circle" class="w-4 h-4 mt-0.5 text-emerald-600 shrink-0" aria-hidden="true"></i>
+                        <span>Unlimited cluster size (no caps)</span>
+                      </li>
+                      <li class="flex items-start gap-3">
+                        <i data-lucide="check-circle" class="w-4 h-4 mt-0.5 text-emerald-600 shrink-0" aria-hidden="true"></i>
+                        <span>Manage subscription in Stripe portal</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Enterprise -->
+              <div class="p-8 sm:p-10 flex flex-col">
+                <p class="text-xs font-semibold uppercase tracking-widest text-slate-500">For organizations</p>
+                <div class="mt-2 flex items-center justify-between gap-4">
+                  <h3 class="text-3xl font-bold text-slate-900">Enterprise</h3>
+                  <span class="text-xs font-semibold text-slate-600">Contact sales</span>
+                </div>
+                <p class="mt-2 text-slate-600">For teams that need governance, rollups, and priority support.</p>
+
+                <div class="mt-6">
+                  <div class="text-4xl font-extrabold text-slate-900">Custom</div>
+                  <p class="mt-2 text-sm text-slate-500">Pricing based on seats and usage.</p>
+                </div>
+
+                <a
+                  href="mailto:hello@sheetsage.co?subject=SheetSage%20Enterprise%20-%20Contact%20Sales"
+                  class="mt-6 inline-flex items-center justify-center gap-2 bg-white hover:bg-slate-50 text-slate-700 border border-slate-300 px-6 py-3 rounded-lg font-bold transition"
+                >
+                  Contact sales
+                </a>
+                <p class="mt-4 text-xs text-slate-500">We’ll reply within 1 business day.</p>
+
+                <div class="mt-8 pt-6 border-t border-slate-100">
+                  <p class="text-xs font-semibold text-slate-900">Everything in Pro, plus</p>
+                  <ul class="mt-4 space-y-3 text-sm text-slate-600">
+                    <li class="flex items-start gap-3">
+                      <i data-lucide="check-circle" class="w-4 h-4 mt-0.5 text-slate-700 shrink-0" aria-hidden="true"></i>
+                      <span>Workspace rollups + reporting</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                      <i data-lucide="check-circle" class="w-4 h-4 mt-0.5 text-slate-700 shrink-0" aria-hidden="true"></i>
+                      <span>Governance controls + policy strictness</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                      <i data-lucide="check-circle" class="w-4 h-4 mt-0.5 text-slate-700 shrink-0" aria-hidden="true"></i>
+                      <span>Seat management</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                      <i data-lucide="check-circle" class="w-4 h-4 mt-0.5 text-slate-700 shrink-0" aria-hidden="true"></i>
+                      <span>Scheduled scans + emailed summaries</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                      <i data-lucide="check-circle" class="w-4 h-4 mt-0.5 text-slate-700 shrink-0" aria-hidden="true"></i>
+                      <span>Priority support</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
             </div>
-            <p class="mt-4 text-slate-600 leading-relaxed">Governance features for shared spreadsheets and workspaces.</p>
-            <div class="mt-7">
-              <div class="text-4xl font-extrabold leading-tight text-slate-900">Coming soon</div>
-              <div class="text-sm text-slate-500 mt-1">If you need this, tell us.</div>
-            </div>
-            <ul class="mt-8 ss-feature-list">
-              <li class="ss-feature-item">
-                <i data-lucide="clock" class="ss-feature-icon text-slate-500" aria-hidden="true"></i>
-                <span>Scheduled scans + emailed summaries</span>
-              </li>
-              <li class="ss-feature-item">
-                <i data-lucide="shield" class="ss-feature-icon text-slate-500" aria-hidden="true"></i>
-                <span>Policy controls + strictness</span>
-              </li>
-              <li class="ss-feature-item">
-                <i data-lucide="bar-chart-3" class="ss-feature-icon text-slate-500" aria-hidden="true"></i>
-                <span>Workspace rollups + reporting</span>
-              </li>
-              <li class="ss-feature-item">
-                <i data-lucide="users" class="ss-feature-icon text-slate-500" aria-hidden="true"></i>
-                <span>Seat management</span>
-              </li>
-            </ul>
-            <div class="ss-card-footer">
-              <a
-                href="mailto:hello@sheetsage.co?subject=SheetSage%20Teams%20-%20Contact%20Sales"
-                class="w-full inline-flex items-center justify-center gap-2 bg-white hover:bg-slate-50 text-slate-700 border border-slate-300 px-6 py-3 rounded-lg font-bold transition"
-              >
-                Contact sales
-              </a>
-              <p class="mt-3 text-xs text-slate-500">We'll prioritize this based on demand.</p>
-            </div>
-          </div>
           </div>
         </div>
       </section>
@@ -384,12 +419,13 @@
           </div>
 
           <div class="mt-10 overflow-x-auto">
-            <table class="w-full min-w-[760px] border border-slate-200 rounded-2xl overflow-hidden bg-white shadow-sm">
+            <table class="w-full min-w-[920px] border border-slate-200 rounded-2xl overflow-hidden bg-white shadow-sm">
               <thead class="bg-slate-50 border-b border-slate-200">
                 <tr>
                   <th scope="col" class="text-left px-6 py-4 text-sm font-bold text-slate-900">Feature</th>
                   <th scope="col" class="text-left px-6 py-4 text-sm font-bold text-slate-900">Free</th>
                   <th scope="col" class="text-left px-6 py-4 text-sm font-bold text-slate-900 bg-emerald-50/60">Pro</th>
+                  <th scope="col" class="text-left px-6 py-4 text-sm font-bold text-slate-900">Enterprise</th>
                 </tr>
               </thead>
               <tbody class="divide-y divide-slate-200">
@@ -397,36 +433,67 @@
                   <td class="px-6 py-5 text-slate-700 font-semibold">Unlimited scans + health score</td>
                   <td class="px-6 py-5 text-slate-700"><span class="text-emerald-700 font-bold">Yes</span></td>
                   <td class="px-6 py-5 text-slate-700 bg-emerald-50/30"><span class="text-emerald-700 font-bold">Yes</span></td>
+                  <td class="px-6 py-5 text-slate-700"><span class="text-emerald-700 font-bold">Yes</span></td>
                 </tr>
                 <tr>
                   <td class="px-6 py-5 text-slate-700 font-semibold">Ranked clusters + explanations</td>
                   <td class="px-6 py-5 text-slate-700"><span class="text-emerald-700 font-bold">Yes</span></td>
                   <td class="px-6 py-5 text-slate-700 bg-emerald-50/30"><span class="text-emerald-700 font-bold">Yes</span></td>
+                  <td class="px-6 py-5 text-slate-700"><span class="text-emerald-700 font-bold">Yes</span></td>
                 </tr>
                 <tr>
                   <td class="px-6 py-5 text-slate-700 font-semibold">Fix issues one-by-one</td>
                   <td class="px-6 py-5 text-slate-700">Daily limit</td>
                   <td class="px-6 py-5 text-slate-700 bg-emerald-50/30"><span class="text-emerald-700 font-bold">Unlimited</span></td>
+                  <td class="px-6 py-5 text-slate-700"><span class="text-emerald-700 font-bold">Unlimited</span></td>
                 </tr>
                 <tr>
                   <td class="px-6 py-5 text-slate-700 font-semibold">Fix clusters (auto-fix)</td>
                   <td class="px-6 py-5 text-slate-700">Capped cluster size</td>
                   <td class="px-6 py-5 text-slate-700 bg-emerald-50/30"><span class="text-emerald-700 font-bold">No caps</span></td>
+                  <td class="px-6 py-5 text-slate-700"><span class="text-emerald-700 font-bold">No caps</span></td>
                 </tr>
                 <tr>
                   <td class="px-6 py-5 text-slate-700 font-semibold">Fix All (bulk fixes)</td>
                   <td class="px-6 py-5 text-slate-700">One-time token on high-risk scan</td>
                   <td class="px-6 py-5 text-slate-700 bg-emerald-50/30"><span class="text-emerald-700 font-bold">Unlimited</span></td>
+                  <td class="px-6 py-5 text-slate-700"><span class="text-emerald-700 font-bold">Unlimited</span></td>
                 </tr>
                 <tr>
                   <td class="px-6 py-5 text-slate-700 font-semibold">Snapshots + restore (rollback)</td>
                   <td class="px-6 py-5 text-slate-700"><span class="text-emerald-700 font-bold">Yes</span></td>
                   <td class="px-6 py-5 text-slate-700 bg-emerald-50/30"><span class="text-emerald-700 font-bold">Yes</span></td>
+                  <td class="px-6 py-5 text-slate-700"><span class="text-emerald-700 font-bold">Yes</span></td>
                 </tr>
                 <tr>
-                  <td class="px-6 py-5 text-slate-700 font-semibold">Manage subscription</td>
+                  <td class="px-6 py-5 text-slate-700 font-semibold">Scheduled scans + emailed summaries</td>
+                  <td class="px-6 py-5 text-slate-700">-</td>
+                  <td class="px-6 py-5 text-slate-700 bg-emerald-50/30">-</td>
+                  <td class="px-6 py-5 text-slate-700"><span class="text-emerald-700 font-bold">Yes</span></td>
+                </tr>
+                <tr>
+                  <td class="px-6 py-5 text-slate-700 font-semibold">Workspace rollups + reporting</td>
+                  <td class="px-6 py-5 text-slate-700">-</td>
+                  <td class="px-6 py-5 text-slate-700 bg-emerald-50/30">-</td>
+                  <td class="px-6 py-5 text-slate-700"><span class="text-emerald-700 font-bold">Yes</span></td>
+                </tr>
+                <tr>
+                  <td class="px-6 py-5 text-slate-700 font-semibold">Governance controls</td>
+                  <td class="px-6 py-5 text-slate-700">-</td>
+                  <td class="px-6 py-5 text-slate-700 bg-emerald-50/30">-</td>
+                  <td class="px-6 py-5 text-slate-700"><span class="text-emerald-700 font-bold">Yes</span></td>
+                </tr>
+                <tr>
+                  <td class="px-6 py-5 text-slate-700 font-semibold">Support</td>
+                  <td class="px-6 py-5 text-slate-700">Standard</td>
+                  <td class="px-6 py-5 text-slate-700 bg-emerald-50/30">Standard</td>
+                  <td class="px-6 py-5 text-slate-700"><span class="text-emerald-700 font-bold">Priority</span></td>
+                </tr>
+                <tr>
+                  <td class="px-6 py-5 text-slate-700 font-semibold">Billing</td>
                   <td class="px-6 py-5 text-slate-700">-</td>
                   <td class="px-6 py-5 text-slate-700 bg-emerald-50/30">Stripe customer portal</td>
+                  <td class="px-6 py-5 text-slate-700">Invoice / contract</td>
                 </tr>
               </tbody>
             </table>
