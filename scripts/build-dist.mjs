@@ -1,4 +1,5 @@
 import { promises as fs } from "node:fs";
+import crypto from "node:crypto";
 import path from "node:path";
 
 const ROOT = process.cwd();
@@ -33,6 +34,19 @@ async function copyFile(source, destination) {
   await withRetries(() => fs.copyFile(source, destination), { attempts: 20, delayMs: 100 });
 }
 
+async function writeFile(destination, contents) {
+  await fs.mkdir(path.dirname(destination), { recursive: true });
+  await withRetries(() => fs.writeFile(destination, contents), { attempts: 20, delayMs: 100 });
+}
+
+async function fingerprintFile(relativePath) {
+  const data = await fs.readFile(path.join(ROOT, relativePath));
+  const digest = crypto.createHash("sha256").update(data).digest("hex").slice(0, 10);
+  const ext = path.extname(relativePath);
+  const base = relativePath.slice(0, -ext.length);
+  return `${base}.${digest}${ext}`;
+}
+
 async function main() {
   try {
     await withRetries(() => fs.rm(DIST, { recursive: true, force: true }), { attempts: 20, delayMs: 200 });
@@ -43,15 +57,20 @@ async function main() {
   }
   await fs.mkdir(DIST, { recursive: true });
 
+  const htmlFiles = ["index.html", "pricing.html", "privacy.html", "terms.html"];
+
+  const cacheBustedAssets = ["assets/tailwind.css", "assets/site.css", "assets/site.js"];
+  const assetMapping = new Map();
+  for (const assetPath of cacheBustedAssets) {
+    const fingerprinted = await fingerprintFile(assetPath);
+    assetMapping.set(assetPath, fingerprinted);
+
+    await copyFile(path.join(ROOT, assetPath), path.join(DIST, assetPath));
+    await copyFile(path.join(ROOT, assetPath), path.join(DIST, fingerprinted));
+  }
+
   const filesToCopy = [
-    "index.html",
-    "pricing.html",
-    "privacy.html",
-    "terms.html",
     "assets/favicon.svg",
-    "assets/site.css",
-    "assets/site.js",
-    "assets/tailwind.css",
     "assets/demo-poster.svg",
     "assets/demo.mp4",
     "assets/vendor/lucide.min.js",
@@ -59,6 +78,14 @@ async function main() {
 
   for (const relativePath of filesToCopy) {
     await copyFile(path.join(ROOT, relativePath), path.join(DIST, relativePath));
+  }
+
+  for (const htmlPath of htmlFiles) {
+    let html = await fs.readFile(path.join(ROOT, htmlPath), "utf8");
+    for (const [originalPath, fingerprintedPath] of assetMapping.entries()) {
+      html = html.split(originalPath).join(fingerprintedPath);
+    }
+    await writeFile(path.join(DIST, htmlPath), html);
   }
 }
 
