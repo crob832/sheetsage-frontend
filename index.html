@@ -5,6 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SheetSage - The Automated Auditor for Google Sheets</title>
     <meta name="description" content="Scan your workbook for risky lookup formulas, rank issues by impact, and apply safer fixes with snapshots and restore. Privacy-first and local by default.">
+    <link rel="canonical" href="https://sheetsage.co/">
+    <meta name="robots" content="index,follow">
+    <meta name="theme-color" content="#059669">
+
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="SheetSage">
+    <meta property="og:title" content="SheetSage - The Automated Auditor for Google Sheets">
+    <meta property="og:description" content="Scan your workbook for risky lookup formulas, rank issues by impact, and apply safer fixes with snapshots and restore. Privacy-first and local by default.">
+    <meta property="og:url" content="https://sheetsage.co/">
+    <meta property="og:image" content="https://sheetsage.co/assets/og.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="SheetSage - The Automated Auditor for Google Sheets">
+    <meta name="twitter:description" content="Detect risky lookups, fix drift, and quantify spreadsheet risk in seconds.">
+    <meta name="twitter:image" content="https://sheetsage.co/assets/og.png">
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://sheetsage.co/#organization","name":"SheetSage","url":"https://sheetsage.co/","logo":{"@type":"ImageObject","url":"https://sheetsage.co/assets/logo.png"}},{"@type":"WebSite","@id":"https://sheetsage.co/#website","url":"https://sheetsage.co/","name":"SheetSage","inLanguage":"en","publisher":{"@id":"https://sheetsage.co/#organization"}},{"@type":"WebPage","@id":"https://sheetsage.co/#webpage","url":"https://sheetsage.co/","name":"SheetSage - The Automated Auditor for Google Sheets","description":"Scan your workbook for risky lookup formulas, rank issues by impact, and apply safer fixes with snapshots and restore. Privacy-first and local by default.","inLanguage":"en","isPartOf":{"@id":"https://sheetsage.co/#website"},"about":{"@id":"https://sheetsage.co/#organization"}},{"@type":"SoftwareApplication","@id":"https://sheetsage.co/#app","name":"SheetSage","applicationCategory":"BusinessApplication","operatingSystem":"Web","url":"https://sheetsage.co/","description":"SheetSage scans Google Sheets for risky formulas, ranks issues by impact, and helps you apply safer fixes with snapshots and restore.","publisher":{"@id":"https://sheetsage.co/#organization"}}]}</script>
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="assets/tailwind.css">
     <link rel="stylesheet" href="assets/site.css">
@@ -13,11 +31,13 @@
 </head>
 <body class="bg-slate-50 text-slate-900 antialiased">
 
+    <a href="#content" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[60] focus:bg-white focus:border focus:border-emerald-200 focus:text-emerald-700 focus:px-4 focus:py-2 focus:rounded-lg focus:shadow">Skip to content</a>
+
     <!-- Navigation -->
     <nav class="fixed w-full z-50 bg-white/80 backdrop-blur-md border-b border-slate-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
-                <a class="flex items-center gap-2" href="index.html">
+                <a class="flex items-center gap-2" href="/">
                     <div class="w-8 h-8 bg-emerald-600 rounded-lg flex items-center justify-center text-white font-bold text-xl" aria-hidden="true">S</div>
                     <span class="font-bold text-xl tracking-tight text-slate-800">SheetSage</span>
                 </a>
@@ -25,9 +45,10 @@
                     <a href="#features" class="text-slate-600 hover:text-emerald-600 font-medium transition">Features</a>
                     <a href="#how-it-works" class="text-slate-600 hover:text-emerald-600 font-medium transition">How it Works</a>
                     <a href="#demo" class="text-slate-600 hover:text-emerald-600 font-medium transition">Demo</a>
-                    <a href="pricing.html" class="text-slate-600 hover:text-emerald-600 font-medium transition">Pricing</a>
-                    <a href="privacy.html" class="text-slate-600 hover:text-emerald-600 font-medium transition">Privacy</a>
-                    <a href="terms.html" class="text-slate-600 hover:text-emerald-600 font-medium transition">Terms</a>
+                    <a href="/pricing" class="text-slate-600 hover:text-emerald-600 font-medium transition">Pricing</a>
+                    <a href="/silent-spreadsheet-errors" class="text-slate-600 hover:text-emerald-600 font-medium transition">Guides</a>
+                    <a href="/privacy" class="text-slate-600 hover:text-emerald-600 font-medium transition">Privacy</a>
+                    <a href="/terms" class="text-slate-600 hover:text-emerald-600 font-medium transition">Terms</a>
                 </div>
                 <div class="flex items-center gap-2">
                     <a href="https://workspace.google.com/marketplace/app/sheetsage/115342178236?flow_type=2" target="_blank" rel="noopener noreferrer" class="bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 sm:px-5 rounded-full font-medium transition shadow-lg shadow-emerald-200">
@@ -45,9 +66,10 @@
                 <a href="#features" class="block text-slate-700 font-medium hover:text-emerald-600 transition">Features</a>
                 <a href="#how-it-works" class="block text-slate-700 font-medium hover:text-emerald-600 transition">How it Works</a>
                 <a href="#demo" class="block text-slate-700 font-medium hover:text-emerald-600 transition">Demo</a>
-                <a href="pricing.html" class="block text-slate-700 font-medium hover:text-emerald-600 transition">Pricing</a>
-                <a href="privacy.html" class="block text-slate-700 font-medium hover:text-emerald-600 transition">Privacy</a>
-                <a href="terms.html" class="block text-slate-700 font-medium hover:text-emerald-600 transition">Terms</a>
+                <a href="/pricing" class="block text-slate-700 font-medium hover:text-emerald-600 transition">Pricing</a>
+                <a href="/silent-spreadsheet-errors" class="block text-slate-700 font-medium hover:text-emerald-600 transition">Guides</a>
+                <a href="/privacy" class="block text-slate-700 font-medium hover:text-emerald-600 transition">Privacy</a>
+                <a href="/terms" class="block text-slate-700 font-medium hover:text-emerald-600 transition">Terms</a>
                 <a href="https://workspace.google.com/marketplace/app/sheetsage/115342178236?flow_type=2" target="_blank" rel="noopener noreferrer" class="block text-slate-700 font-medium hover:text-emerald-600 transition">Install Free</a>
                 <a href="mailto:hello@sheetsage.co" class="block text-slate-700 font-medium hover:text-emerald-600 transition">Contact</a>
             </div>
@@ -57,7 +79,7 @@
     <div id="mobileMenuOverlay" class="md:hidden hidden fixed inset-0 bg-slate-900/30 backdrop-blur-sm z-40" aria-hidden="true"></div>
 
     <!-- Hero Section -->
-    <section class="pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden bg-grid relative">
+    <section id="content" class="pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden bg-grid relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="grid lg:grid-cols-2 gap-12 items-center">
                 
@@ -380,11 +402,11 @@
                 <h3 class="text-lg font-bold text-slate-900 mb-2">Read the full policy</h3>
                 <p class="text-slate-700">The complete Privacy Policy and Terms are available as standalone pages.</p>
                 <div class="mt-4 flex flex-col sm:flex-row gap-3">
-                    <a href="privacy.html" class="inline-flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 rounded-lg font-semibold transition">
+                    <a href="/privacy" class="inline-flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 rounded-lg font-semibold transition">
                         <i data-lucide="file-text" class="w-4 h-4"></i>
                         Privacy Policy
                     </a>
-                    <a href="terms.html" class="inline-flex items-center justify-center gap-2 bg-white hover:bg-slate-50 text-slate-700 border border-slate-300 px-4 py-2 rounded-lg font-semibold transition">
+                    <a href="/terms" class="inline-flex items-center justify-center gap-2 bg-white hover:bg-slate-50 text-slate-700 border border-slate-300 px-4 py-2 rounded-lg font-semibold transition">
                         <i data-lucide="scale" class="w-4 h-4"></i>
                         Terms
                     </a>
@@ -534,15 +556,16 @@
     <footer class="bg-white border-t border-slate-200 py-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col md:flex-row justify-between items-center gap-6">
-                <a class="flex items-center gap-2" href="index.html">
+                <a class="flex items-center gap-2" href="/">
                     <div class="w-6 h-6 bg-emerald-600 rounded flex items-center justify-center text-white font-bold text-xs" aria-hidden="true">S</div>
                     <span class="font-bold text-slate-800">SheetSage</span>
                 </a>
                 <div class="flex flex-wrap justify-center gap-x-8 gap-y-2 text-sm text-slate-500">
-                    <a href="pricing.html" class="hover:text-emerald-600 transition">Pricing</a>
+                    <a href="/pricing" class="hover:text-emerald-600 transition">Pricing</a>
+                    <a href="/silent-spreadsheet-errors" class="hover:text-emerald-600 transition">Guides</a>
                     <a href="#how-it-works" class="hover:text-emerald-600 transition">How it Works</a>
-                    <a href="privacy.html" class="hover:text-emerald-600 transition">Privacy</a>
-                    <a href="terms.html" class="hover:text-emerald-600 transition">Terms</a>
+                    <a href="/privacy" class="hover:text-emerald-600 transition">Privacy</a>
+                    <a href="/terms" class="hover:text-emerald-600 transition">Terms</a>
                     <a href="mailto:hello@sheetsage.co" class="hover:text-emerald-600 transition">Contact</a>
                 </div>
                 <div class="text-sm text-slate-400">&copy; <span data-year></span> SheetSage. All rights reserved.</div>

@@ -113,3 +113,94 @@ body {
 .ss-accordion[open] .ss-accordion-icon {
   transform: rotate(180deg);
 }
+
+/* Lightweight prose styling for long-form content pages (guides, docs). */
+.ss-prose {
+  color: #334155; /* slate-700 */
+  line-height: 1.75;
+}
+
+.ss-prose h2 {
+  margin-top: 2.5rem;
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: #0f172a; /* slate-900 */
+}
+
+.ss-prose h3 {
+  margin-top: 1.5rem;
+  font-size: 1.125rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: #0f172a; /* slate-900 */
+}
+
+.ss-prose p,
+.ss-prose ul,
+.ss-prose ol,
+.ss-prose pre,
+.ss-prose blockquote {
+  margin-top: 0.75rem;
+}
+
+.ss-prose ul,
+.ss-prose ol {
+  padding-left: 1.5rem;
+}
+
+.ss-prose ul {
+  list-style: disc;
+}
+
+.ss-prose ol {
+  list-style: decimal;
+}
+
+.ss-prose li + li {
+  margin-top: 0.25rem;
+}
+
+.ss-prose a {
+  color: #047857; /* emerald-700 */
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.ss-prose a:hover {
+  text-decoration: underline;
+}
+
+.ss-prose code {
+  font-family:
+    "JetBrains Mono",
+    ui-monospace,
+    SFMono-Regular,
+    Menlo,
+    Monaco,
+    Consolas,
+    "Liberation Mono",
+    "Courier New",
+    monospace;
+  font-size: 0.95em;
+  background: #f1f5f9; /* slate-100 */
+  border: 1px solid #e2e8f0; /* slate-200 */
+  padding: 0.1rem 0.3rem;
+  border-radius: 0.4rem;
+}
+
+.ss-prose pre {
+  background: #0f172a; /* slate-900 */
+  color: #e2e8f0; /* slate-200 */
+  border-radius: 0.9rem;
+  padding: 1rem 1.1rem;
+  overflow-x: auto;
+}
+
+.ss-prose pre code {
+  background: transparent;
+  border: 0;
+  padding: 0;
+  border-radius: 0;
+  color: inherit;
+}

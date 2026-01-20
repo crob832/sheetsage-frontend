@@ -1,0 +1,343 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Magic Numbers in Spreadsheets: Hidden Assumptions That Break Audits | SheetSage</title>
+    <meta
+      name="description"
+      content="Hardcoded constants (magic numbers) hide assumptions and make models hard to update safely. Learn how to externalize assumptions and how SheetSage (R5) flags risky constants."
+    />
+    <link rel="canonical" href="https://sheetsage.co/magic-numbers-in-spreadsheets" />
+    <meta name="robots" content="index,follow" />
+    <meta name="theme-color" content="#059669" />
+
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="SheetSage" />
+    <meta property="og:title" content="Magic numbers: the invisible assumptions hiding in your formulas" />
+    <meta
+      property="og:description"
+      content="Magic numbers hide assumptions inside formulas, making models hard to audit and update safely. Learn safer patterns and how SheetSage (R5) flags likely magic numbers."
+    />
+    <meta property="og:url" content="https://sheetsage.co/magic-numbers-in-spreadsheets" />
+    <meta property="og:image" content="https://sheetsage.co/assets/og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Magic numbers: the invisible assumptions hiding in your formulas" />
+    <meta name="twitter:description" content="Hardcoded thresholds and multipliers are audit traps. Externalize assumptions into labeled cells." />
+    <meta name="twitter:image" content="https://sheetsage.co/assets/og.png" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://sheetsage.co/#organization","name":"SheetSage","url":"https://sheetsage.co/","logo":{"@type":"ImageObject","url":"https://sheetsage.co/assets/logo.png"}},{"@type":"WebSite","@id":"https://sheetsage.co/#website","url":"https://sheetsage.co/","name":"SheetSage","inLanguage":"en","publisher":{"@id":"https://sheetsage.co/#organization"}},{"@type":"BreadcrumbList","@id":"https://sheetsage.co/magic-numbers-in-spreadsheets#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://sheetsage.co/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://sheetsage.co/silent-spreadsheet-errors"},{"@type":"ListItem","position":3,"name":"Magic Numbers","item":"https://sheetsage.co/magic-numbers-in-spreadsheets"}]},{"@type":"Article","@id":"https://sheetsage.co/magic-numbers-in-spreadsheets#article","headline":"Magic numbers: the invisible assumptions hiding in your formulas","description":"Hardcoded constants (magic numbers) hide assumptions and make models hard to update safely. Learn how to externalize assumptions and how SheetSage (R5) flags risky constants.","inLanguage":"en","image":"https://sheetsage.co/assets/og.png","author":{"@id":"https://sheetsage.co/#organization"},"publisher":{"@id":"https://sheetsage.co/#organization"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://sheetsage.co/magic-numbers-in-spreadsheets"},"isPartOf":{"@id":"https://sheetsage.co/#website"}}]}</script>
+
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="assets/tailwind.css" />
+    <link rel="stylesheet" href="assets/site.css" />
+    <script src="assets/vendor/lucide.min.js" defer></script>
+    <script src="assets/site.js" defer></script>
+  </head>
+
+  <body class="bg-slate-50 text-slate-900 antialiased">
+    <a
+      href="#content"
+      class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[60] focus:bg-white focus:border focus:border-emerald-200 focus:text-emerald-700 focus:px-4 focus:py-2 focus:rounded-lg focus:shadow"
+      >Skip to content</a
+    >
+
+    <nav class="fixed w-full z-50 bg-white/80 backdrop-blur-md border-b border-slate-200">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+          <a href="/" class="flex items-center gap-2">
+            <div
+              class="w-8 h-8 bg-emerald-600 rounded-lg flex items-center justify-center text-white font-bold text-xl"
+              aria-hidden="true"
+            >
+              S
+            </div>
+            <span class="font-bold text-xl tracking-tight text-slate-800">SheetSage</span>
+          </a>
+
+          <div class="hidden md:flex items-center space-x-8">
+            <a href="/#features" class="text-slate-600 hover:text-emerald-600 font-medium transition">Features</a>
+            <a href="/#how-it-works" class="text-slate-600 hover:text-emerald-600 font-medium transition">How it works</a>
+            <a href="/#demo" class="text-slate-600 hover:text-emerald-600 font-medium transition">Demo</a>
+            <a href="/pricing" class="text-slate-600 hover:text-emerald-600 font-medium transition">Pricing</a>
+            <a href="/silent-spreadsheet-errors" class="text-emerald-700 font-semibold">Guides</a>
+            <a href="/privacy" class="text-slate-600 hover:text-emerald-600 font-medium transition">Privacy</a>
+            <a href="/terms" class="text-slate-600 hover:text-emerald-600 font-medium transition">Terms</a>
+          </div>
+
+          <div class="flex items-center gap-2">
+            <a
+              href="https://workspace.google.com/marketplace/app/sheetsage/115342178236?flow_type=2"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 sm:px-5 rounded-full font-medium transition shadow-lg shadow-emerald-200"
+              >Install Free</a
+            >
+            <button
+              id="mobileMenuButton"
+              type="button"
+              class="md:hidden inline-flex items-center justify-center w-10 h-10 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 transition"
+              aria-controls="mobileMenu"
+              aria-expanded="false"
+              aria-label="Open menu"
+            >
+              <i data-lucide="menu" class="w-5 h-5 text-slate-700" aria-hidden="true"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div id="mobileMenu" class="md:hidden hidden border-t border-slate-200 bg-white">
+        <div class="max-w-7xl mx-auto px-4 py-4 space-y-3">
+          <a href="/#features" class="block text-slate-700 font-medium hover:text-emerald-600 transition">Features</a>
+          <a href="/#how-it-works" class="block text-slate-700 font-medium hover:text-emerald-600 transition">How it works</a>
+          <a href="/#demo" class="block text-slate-700 font-medium hover:text-emerald-600 transition">Demo</a>
+          <a href="/pricing" class="block text-slate-700 font-medium hover:text-emerald-600 transition">Pricing</a>
+          <a href="/silent-spreadsheet-errors" class="block text-slate-700 font-medium hover:text-emerald-600 transition">Guides</a>
+          <a href="/privacy" class="block text-slate-700 font-medium hover:text-emerald-600 transition">Privacy</a>
+          <a href="/terms" class="block text-slate-700 font-medium hover:text-emerald-600 transition">Terms</a>
+          <a
+            href="https://workspace.google.com/marketplace/app/sheetsage/115342178236?flow_type=2"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="block text-slate-700 font-medium hover:text-emerald-600 transition"
+            >Install Free</a
+          >
+          <a href="mailto:hello@sheetsage.co" class="block text-slate-700 font-medium hover:text-emerald-600 transition">Contact</a>
+        </div>
+      </div>
+    </nav>
+
+    <div id="mobileMenuOverlay" class="md:hidden hidden fixed inset-0 bg-slate-900/30 backdrop-blur-sm z-40" aria-hidden="true"></div>
+
+    <main id="content" class="pt-28 pb-20">
+      <section class="relative overflow-hidden bg-grid py-14 lg:py-18">
+        <div class="absolute -top-12 -right-12 w-72 h-72 bg-emerald-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
+        <div class="absolute -bottom-12 -left-12 w-72 h-72 bg-teal-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div class="max-w-3xl mx-auto lg:mx-0">
+            <p class="text-sm text-slate-500">
+              <a href="/" class="text-emerald-700 font-semibold hover:underline">Home</a>
+              <span class="mx-2" aria-hidden="true">/</span>
+              <a href="/silent-spreadsheet-errors" class="text-emerald-700 font-semibold hover:underline">Guides</a>
+              <span class="mx-2" aria-hidden="true">/</span>
+              <span>Magic numbers</span>
+            </p>
+
+            <div
+              class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-100 text-emerald-700 text-sm font-semibold mt-6"
+            >
+              <i data-lucide="wand-2" class="w-4 h-4" aria-hidden="true"></i>
+              <span>Rule R5 (magic numbers)</span>
+            </div>
+
+            <h1 class="text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight mt-6">
+              Magic numbers: the invisible assumptions <span class="text-gradient">hiding in your formulas</span>
+            </h1>
+
+            <p class="text-xl text-slate-600 mt-6 leading-relaxed">
+              A model you cannot audit is a model you cannot trust. Hardcoded thresholds and multipliers hide assumptions and make scenario changes
+              dangerous.
+            </p>
+
+            <div class="mt-8 flex flex-col sm:flex-row gap-4">
+              <a
+                href="https://workspace.google.com/marketplace/app/sheetsage/115342178236?flow_type=2"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-4 rounded-lg font-bold text-lg transition shadow-xl shadow-emerald-200"
+              >
+                <i data-lucide="download-cloud" aria-hidden="true"></i>
+                Install Free
+              </a>
+              <a
+                href="/silent-spreadsheet-errors"
+                class="flex items-center justify-center gap-2 bg-white hover:bg-slate-50 text-slate-700 border border-slate-300 px-8 py-4 rounded-lg font-bold text-lg transition"
+              >
+                <i data-lucide="arrow-left" aria-hidden="true"></i>
+                Back to the 5 rules
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="py-16 bg-white border-t border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="grid lg:grid-cols-[280px_1fr] gap-10">
+            <div class="hidden lg:block">
+              <div class="lg:sticky lg:top-24 bg-slate-50 border border-slate-200 rounded-2xl p-5">
+                <div class="text-sm font-bold text-slate-900 mb-3">On this page</div>
+                <nav data-toc data-toc-label="On this page"></nav>
+                <div class="mt-5 pt-5 border-t border-slate-200">
+                  <a
+                    href="/vlookup-column-index-risk"
+                    class="inline-flex items-center gap-2 text-sm text-slate-700 hover:text-emerald-700 transition"
+                  >
+                    <i data-lucide="arrow-right" class="w-4 h-4" aria-hidden="true"></i>
+                    Related: column index risk
+                  </a>
+                  <a
+                    href="/absolute-references-anchor-drift"
+                    class="mt-3 inline-flex items-center gap-2 text-sm text-slate-700 hover:text-emerald-700 transition"
+                  >
+                    <i data-lucide="arrow-right" class="w-4 h-4" aria-hidden="true"></i>
+                    Related: reference drift
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <div class="lg:hidden mb-8">
+                <details class="ss-accordion group bg-white border border-slate-200 rounded-2xl p-5">
+                  <summary class="flex items-center justify-between gap-4 cursor-pointer">
+                    <span class="text-base font-bold text-slate-900">On this page</span>
+                    <i
+                      data-lucide="chevron-down"
+                      class="ss-accordion-icon w-5 h-5 text-slate-500 shrink-0"
+                      aria-hidden="true"
+                    ></i>
+                  </summary>
+                  <div class="mt-4">
+                    <nav data-toc data-toc-label="On this page (mobile)"></nav>
+                  </div>
+                </details>
+              </div>
+
+              <article class="ss-prose" data-toc-content>
+                <div class="bg-emerald-50 border border-emerald-200 rounded-2xl p-6">
+                  <h2 id="quick-fix" class="!mt-0">The clean fix (template)</h2>
+                  <p>Create an Assumptions section and reference cells instead of hardcoded numbers:</p>
+                  <pre><code>GrowthRate
+Threshold
+CommissionRate</code></pre>
+                  <p class="text-sm text-slate-600">Then reference those values in formulas (or use named ranges).</p>
+                </div>
+
+                <h2 id="examples">Examples of magic numbers</h2>
+                <pre><code>=Revenue * 1.05     // what is 1.05?
+=IF(Sales &gt; 50000, Amount * 0.15, Amount * 0.10)</code></pre>
+                <p>These formulas work — but they hide business logic inside numeric literals.</p>
+
+                <h2 id="why-risky">Why it is risky</h2>
+                <ul>
+                  <li><span class="font-semibold">Assumptions are invisible:</span> reviewers cannot tell why a constant exists.</li>
+                  <li><span class="font-semibold">Scenario changes are dangerous:</span> “did we update all instances?” becomes a risk.</li>
+                  <li><span class="font-semibold">No single source of truth:</span> the same constant gets duplicated across tabs.</li>
+                </ul>
+
+                <h2 id="best-practice">Best practice: externalize assumptions</h2>
+                <p>Move constants into labeled cells (or a dedicated “Assumptions” tab), then reference those cells everywhere.</p>
+                <ul>
+                  <li>Improves auditability and clarity</li>
+                  <li>Makes scenario analysis safer</li>
+                  <li>Reduces duplicated logic</li>
+                </ul>
+
+                <h2 id="sheetsage">How SheetSage flags this (R5)</h2>
+                <p>
+                  SheetSage looks for high-signal numeric literals used as thresholds, multipliers/divisors, or structural index arguments. R5 is
+                  guidance-only (no auto-fix), because meaning is contextual.
+                </p>
+
+                <h2 id="faq">FAQ</h2>
+                <div class="space-y-4 not-prose">
+                  <details class="ss-accordion group bg-white border border-slate-200 rounded-2xl p-6">
+                    <summary class="flex items-center justify-between gap-4 cursor-pointer">
+                      <span class="text-lg font-bold text-slate-900">Which numbers count as “magic”?</span>
+                      <i data-lucide="chevron-down" class="ss-accordion-icon w-5 h-5 text-slate-500 shrink-0" aria-hidden="true"></i>
+                    </summary>
+                    <p class="mt-4 text-slate-600">
+                      The risky ones are thresholds and multipliers that represent business assumptions (rates, caps, bands), especially when repeated
+                      across a workbook.
+                    </p>
+                  </details>
+
+                  <details class="ss-accordion group bg-white border border-slate-200 rounded-2xl p-6">
+                    <summary class="flex items-center justify-between gap-4 cursor-pointer">
+                      <span class="text-lg font-bold text-slate-900">How do I build an assumptions table that scales?</span>
+                      <i data-lucide="chevron-down" class="ss-accordion-icon w-5 h-5 text-slate-500 shrink-0" aria-hidden="true"></i>
+                    </summary>
+                    <p class="mt-4 text-slate-600">
+                      Create a single Assumptions tab with clear labels, units, and owners. Reference it everywhere; avoid duplicating constants.
+                    </p>
+                  </details>
+
+                  <details class="ss-accordion group bg-white border border-slate-200 rounded-2xl p-6">
+                    <summary class="flex items-center justify-between gap-4 cursor-pointer">
+                      <span class="text-lg font-bold text-slate-900">Should I use named ranges?</span>
+                      <i data-lucide="chevron-down" class="ss-accordion-icon w-5 h-5 text-slate-500 shrink-0" aria-hidden="true"></i>
+                    </summary>
+                    <p class="mt-4 text-slate-600">
+                      Yes, when it improves readability and reduces the chance of referencing the wrong cell. Named ranges work well for shared
+                      assumptions and stable tables.
+                    </p>
+                  </details>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div
+      id="stickyCta"
+      class="hidden fixed bottom-4 inset-x-4 z-[70] max-w-3xl mx-auto bg-white border border-slate-200 rounded-2xl shadow-xl p-3 sm:p-4"
+      role="region"
+      aria-label="Install SheetSage"
+      data-sticky-cta
+    >
+      <div class="flex items-center justify-between gap-3">
+        <div class="min-w-0">
+          <div class="text-sm font-extrabold text-slate-900 truncate">Run a free scan in Google Sheets</div>
+          <div class="text-xs text-slate-600 truncate">Install SheetSage. Scan → fixes → snapshot rollback.</div>
+        </div>
+        <div class="flex items-center gap-2 shrink-0">
+          <a
+            href="https://workspace.google.com/marketplace/app/sheetsage/115342178236?flow_type=2"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 rounded-xl font-bold text-sm transition"
+          >
+            Install
+          </a>
+          <button
+            type="button"
+            class="inline-flex items-center justify-center w-10 h-10 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 transition"
+            aria-label="Dismiss"
+            data-sticky-cta-dismiss
+          >
+            <i data-lucide="x" class="w-5 h-5 text-slate-700" aria-hidden="true"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <footer class="bg-white border-t border-slate-200 py-12">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+          <a href="/" class="flex items-center gap-2">
+            <div class="w-6 h-6 bg-emerald-600 rounded flex items-center justify-center text-white font-bold text-xs" aria-hidden="true">
+              S
+            </div>
+            <span class="font-bold text-slate-800">SheetSage</span>
+          </a>
+          <div class="flex flex-wrap justify-center gap-x-8 gap-y-2 text-sm text-slate-500">
+            <a href="/pricing" class="hover:text-emerald-600 transition">Pricing</a>
+            <a href="/silent-spreadsheet-errors" class="hover:text-emerald-600 transition">Guides</a>
+            <a href="/#how-it-works" class="hover:text-emerald-600 transition">How it works</a>
+            <a href="/privacy" class="hover:text-emerald-600 transition">Privacy</a>
+            <a href="/terms" class="hover:text-emerald-600 transition">Terms</a>
+            <a href="mailto:hello@sheetsage.co" class="hover:text-emerald-600 transition">Contact</a>
+          </div>
+          <div class="text-sm text-slate-400">&copy; <span data-year></span> SheetSage. All rights reserved.</div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

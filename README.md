@@ -8,6 +8,13 @@ Static website pages for SheetSage.
 - `pricing.html` - pricing
 - `privacy.html` - privacy policy
 - `terms.html` - terms of service
+- Guides:
+  - `silent-spreadsheet-errors.html` (pillar)
+  - `vlookup-approximate-match.html` (R1)
+  - `vlookup-column-index-risk.html` (R2)
+  - `match-exact-vs-approx.html` (R3)
+  - `absolute-references-anchor-drift.html` (R4)
+  - `magic-numbers-in-spreadsheets.html` (R5)
 
 ## Sitemap + robots
 

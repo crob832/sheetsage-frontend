@@ -1,0 +1,643 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The 5 Silent Spreadsheet Errors That Cost You Money | SheetSage</title>
+    <meta
+      name="description"
+      content="SheetSage scans Google Sheets to catch silent formula failures: unsafe VLOOKUP/MATCH defaults, drifting ranges, broken column indexes, and magic numbers. Fix faster with rule-based detection and rollback."
+    />
+    <link rel="canonical" href="https://sheetsage.co/silent-spreadsheet-errors" />
+    <meta name="robots" content="index,follow" />
+    <meta name="theme-color" content="#059669" />
+
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="SheetSage" />
+    <meta property="og:title" content="The 5 Silent Spreadsheet Errors That Cost You Money" />
+    <meta
+      property="og:description"
+      content="The most common formula patterns that quietly corrupt models (plus safer fixes). SheetSage detects them with rule-based scanning and snapshot rollback."
+    />
+    <meta property="og:url" content="https://sheetsage.co/silent-spreadsheet-errors" />
+    <meta property="og:image" content="https://sheetsage.co/assets/og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="The 5 Silent Spreadsheet Errors That Cost You Money" />
+    <meta
+      name="twitter:description"
+      content="Silent spreadsheet errors usually look plausible. Learn the 5 patterns and the safer fixes SheetSage detects today."
+    />
+    <meta name="twitter:image" content="https://sheetsage.co/assets/og.png" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://sheetsage.co/#organization","name":"SheetSage","url":"https://sheetsage.co/","logo":{"@type":"ImageObject","url":"https://sheetsage.co/assets/logo.png"}},{"@type":"WebSite","@id":"https://sheetsage.co/#website","url":"https://sheetsage.co/","name":"SheetSage","inLanguage":"en","publisher":{"@id":"https://sheetsage.co/#organization"}},{"@type":"BreadcrumbList","@id":"https://sheetsage.co/silent-spreadsheet-errors#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://sheetsage.co/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://sheetsage.co/silent-spreadsheet-errors"}]},{"@type":"Article","@id":"https://sheetsage.co/silent-spreadsheet-errors#article","headline":"The 5 Silent Spreadsheet Errors That Cost You Money","description":"SheetSage scans Google Sheets to catch silent formula failures: unsafe VLOOKUP/MATCH defaults, drifting ranges, broken column indexes, and magic numbers. Fix faster with rule-based detection and rollback.","inLanguage":"en","image":"https://sheetsage.co/assets/og.png","author":{"@id":"https://sheetsage.co/#organization"},"publisher":{"@id":"https://sheetsage.co/#organization"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://sheetsage.co/silent-spreadsheet-errors"},"isPartOf":{"@id":"https://sheetsage.co/#website"}}]}</script>
+
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="assets/tailwind.css" />
+    <link rel="stylesheet" href="assets/site.css" />
+    <script src="assets/vendor/lucide.min.js" defer></script>
+    <script src="assets/site.js" defer></script>
+  </head>
+
+  <body class="bg-slate-50 text-slate-900 antialiased">
+    <a
+      href="#content"
+      class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[60] focus:bg-white focus:border focus:border-emerald-200 focus:text-emerald-700 focus:px-4 focus:py-2 focus:rounded-lg focus:shadow"
+      >Skip to content</a
+    >
+
+    <nav class="fixed w-full z-50 bg-white/80 backdrop-blur-md border-b border-slate-200">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+          <a href="/" class="flex items-center gap-2">
+            <div
+              class="w-8 h-8 bg-emerald-600 rounded-lg flex items-center justify-center text-white font-bold text-xl"
+              aria-hidden="true"
+            >
+              S
+            </div>
+            <span class="font-bold text-xl tracking-tight text-slate-800">SheetSage</span>
+          </a>
+
+          <div class="hidden md:flex items-center space-x-8">
+            <a href="/#features" class="text-slate-600 hover:text-emerald-600 font-medium transition">Features</a>
+            <a href="/#how-it-works" class="text-slate-600 hover:text-emerald-600 font-medium transition">How it works</a>
+            <a href="/#demo" class="text-slate-600 hover:text-emerald-600 font-medium transition">Demo</a>
+            <a href="/pricing" class="text-slate-600 hover:text-emerald-600 font-medium transition">Pricing</a>
+            <a href="/silent-spreadsheet-errors" class="text-emerald-700 font-semibold">Guides</a>
+            <a href="/privacy" class="text-slate-600 hover:text-emerald-600 font-medium transition">Privacy</a>
+            <a href="/terms" class="text-slate-600 hover:text-emerald-600 font-medium transition">Terms</a>
+          </div>
+
+          <div class="flex items-center gap-2">
+            <a
+              href="https://workspace.google.com/marketplace/app/sheetsage/115342178236?flow_type=2"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 sm:px-5 rounded-full font-medium transition shadow-lg shadow-emerald-200"
+              >Install Free</a
+            >
+            <button
+              id="mobileMenuButton"
+              type="button"
+              class="md:hidden inline-flex items-center justify-center w-10 h-10 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 transition"
+              aria-controls="mobileMenu"
+              aria-expanded="false"
+              aria-label="Open menu"
+            >
+              <i data-lucide="menu" class="w-5 h-5 text-slate-700" aria-hidden="true"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div id="mobileMenu" class="md:hidden hidden border-t border-slate-200 bg-white">
+        <div class="max-w-7xl mx-auto px-4 py-4 space-y-3">
+          <a href="/#features" class="block text-slate-700 font-medium hover:text-emerald-600 transition">Features</a>
+          <a href="/#how-it-works" class="block text-slate-700 font-medium hover:text-emerald-600 transition">How it works</a>
+          <a href="/#demo" class="block text-slate-700 font-medium hover:text-emerald-600 transition">Demo</a>
+          <a href="/pricing" class="block text-slate-700 font-medium hover:text-emerald-600 transition">Pricing</a>
+          <a href="/silent-spreadsheet-errors" class="block text-slate-700 font-medium hover:text-emerald-600 transition">Guides</a>
+          <a href="/privacy" class="block text-slate-700 font-medium hover:text-emerald-600 transition">Privacy</a>
+          <a href="/terms" class="block text-slate-700 font-medium hover:text-emerald-600 transition">Terms</a>
+          <a
+            href="https://workspace.google.com/marketplace/app/sheetsage/115342178236?flow_type=2"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="block text-slate-700 font-medium hover:text-emerald-600 transition"
+            >Install Free</a
+          >
+          <a href="mailto:hello@sheetsage.co" class="block text-slate-700 font-medium hover:text-emerald-600 transition">Contact</a>
+        </div>
+      </div>
+    </nav>
+
+    <div id="mobileMenuOverlay" class="md:hidden hidden fixed inset-0 bg-slate-900/30 backdrop-blur-sm z-40" aria-hidden="true"></div>
+
+    <main id="content" class="pt-28 pb-20">
+      <!-- HERO -->
+      <section class="relative overflow-hidden bg-grid py-16 lg:py-20">
+        <div class="absolute -top-12 -right-12 w-72 h-72 bg-emerald-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
+        <div class="absolute -bottom-12 -left-12 w-72 h-72 bg-teal-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div class="grid lg:grid-cols-2 gap-12 items-center">
+            <div class="text-center lg:text-left">
+              <div
+                class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-100 text-emerald-700 text-sm font-semibold mb-6 mx-auto lg:mx-0"
+              >
+                <i data-lucide="book-open" class="w-4 h-4" aria-hidden="true"></i>
+                <span>Guide: what silently breaks models</span>
+              </div>
+
+              <h1 class="text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight mb-6">
+                The 5 silent spreadsheet errors that <span class="text-gradient">cost you money</span>
+              </h1>
+
+              <p class="text-xl text-slate-600 mb-8 leading-relaxed max-w-xl mx-auto lg:mx-0">
+                Most spreadsheet mistakes do not throw errors. They return plausible numbers. SheetSage scans Google Sheets to flag the
+                highest-risk formula patterns and helps you fix them with snapshot rollback.
+              </p>
+
+              <div class="mt-8 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                <a
+                  href="https://workspace.google.com/marketplace/app/sheetsage/115342178236?flow_type=2"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-4 rounded-lg font-bold text-lg transition shadow-xl shadow-emerald-200"
+                >
+                  <i data-lucide="download-cloud" aria-hidden="true"></i>
+                  Install Free
+                </a>
+                <a
+                  href="#rules"
+                  class="flex items-center justify-center gap-2 bg-white hover:bg-slate-50 text-slate-700 border border-slate-300 px-8 py-4 rounded-lg font-bold text-lg transition"
+                >
+                  <i data-lucide="list" aria-hidden="true"></i>
+                  See the 5 rules
+                </a>
+              </div>
+
+              <p class="mt-4 text-sm text-slate-500">
+                <i data-lucide="shield-check" class="w-4 h-4 inline mr-1 text-emerald-500" aria-hidden="true"></i>
+                No new account: runs inside Google Sheets.
+              </p>
+
+              <div class="ss-pill-row">
+                <span class="ss-pill">
+                  <i data-lucide="sheet" class="w-4 h-4 text-emerald-700" aria-hidden="true"></i>
+                  Works inside Google Sheets
+                </span>
+                <span class="ss-pill">
+                  <i data-lucide="camera" class="w-4 h-4 text-emerald-700" aria-hidden="true"></i>
+                  Snapshot rollback
+                </span>
+                <span class="ss-pill">
+                  <i data-lucide="lock" class="w-4 h-4 text-emerald-700" aria-hidden="true"></i>
+                  No spreadsheet data sent externally by default
+                </span>
+              </div>
+            </div>
+
+            <div class="relative">
+              <div
+                class="bg-white rounded-2xl shadow-2xl border border-slate-200 overflow-hidden transform rotate-1 hover:rotate-0 transition duration-500"
+              >
+                <div class="bg-slate-50 border-b border-slate-200 p-4 flex items-center justify-between">
+                  <div class="flex items-center gap-3">
+                    <div class="w-9 h-9 bg-emerald-600 rounded-xl flex items-center justify-center text-white font-bold" aria-hidden="true">
+                      S
+                    </div>
+                    <div>
+                      <div class="font-semibold text-slate-900 leading-tight">SheetSage</div>
+                      <div class="text-xs text-slate-500">Ranked issues + safer fixes</div>
+                    </div>
+                  </div>
+                  <span class="text-xs font-bold bg-emerald-50 text-emerald-700 border border-emerald-200 px-3 py-1 rounded-full">
+                    Health score
+                  </span>
+                </div>
+
+                <div class="p-6">
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div class="bg-slate-50 border border-slate-200 rounded-2xl p-5">
+                      <div class="text-xs text-slate-500">Top risk cluster</div>
+                      <div class="mt-2 text-sm font-extrabold text-slate-900">R1: VLOOKUP match mode</div>
+                      <div class="mt-1 text-xs text-slate-500">Missing/unsafe 4th argument</div>
+                    </div>
+                    <div class="bg-slate-50 border border-slate-200 rounded-2xl p-5">
+                      <div class="text-xs text-slate-500">Safer workflow</div>
+                      <div class="mt-2 text-sm font-extrabold text-slate-900">Fix → snapshot</div>
+                      <div class="mt-1 text-xs text-slate-500">One-click restore</div>
+                    </div>
+                  </div>
+
+                  <div class="mt-6 pt-6 border-t border-slate-100">
+                    <div class="bg-white border border-slate-200 rounded-2xl p-5 shadow-sm">
+                      <div class="flex items-center justify-between gap-4">
+                        <div>
+                          <div class="text-sm font-extrabold text-slate-900">Run scan</div>
+                          <p class="mt-1 text-sm text-slate-600">Get a rule-by-rule report (R1–R5).</p>
+                        </div>
+                        <div class="text-xs font-bold bg-emerald-600 text-white px-4 py-2 rounded-lg">Install</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div
+                    class="mt-6 -mx-6 -mb-6 px-6 py-4 bg-slate-50 border-t border-slate-200 flex items-center justify-between text-xs text-slate-500"
+                  >
+                    <span class="inline-flex items-center gap-2">
+                      <i data-lucide="layers" class="w-4 h-4 text-emerald-600" aria-hidden="true"></i>
+                      Cluster repeats
+                    </span>
+                    <span class="inline-flex items-center gap-2">
+                      <i data-lucide="rotate-ccw" class="w-4 h-4" aria-hidden="true"></i>
+                      Restore anytime
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTENT -->
+      <section class="py-16 bg-white border-t border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="grid lg:grid-cols-[280px_1fr] gap-10">
+            <div class="hidden lg:block">
+              <div class="lg:sticky lg:top-24 bg-slate-50 border border-slate-200 rounded-2xl p-5">
+                <div class="text-sm font-bold text-slate-900 mb-3">On this page</div>
+                <nav data-toc data-toc-label="On this page"></nav>
+                <div class="mt-5 pt-5 border-t border-slate-200">
+                  <a
+                    href="https://workspace.google.com/marketplace/app/sheetsage/115342178236?flow_type=2"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-flex items-center justify-center gap-2 w-full bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 rounded-lg font-semibold transition"
+                  >
+                    <i data-lucide="download-cloud" class="w-4 h-4" aria-hidden="true"></i>
+                    Install Free
+                  </a>
+                  <p class="mt-2 text-xs text-slate-500">Runs inside Google Sheets. Snapshot rollback included.</p>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <div class="lg:hidden mb-8">
+                <details class="ss-accordion group bg-white border border-slate-200 rounded-2xl p-5">
+                  <summary class="flex items-center justify-between gap-4 cursor-pointer">
+                    <span class="text-base font-bold text-slate-900">On this page</span>
+                    <i
+                      data-lucide="chevron-down"
+                      class="ss-accordion-icon w-5 h-5 text-slate-500 shrink-0"
+                      aria-hidden="true"
+                    ></i>
+                  </summary>
+                  <div class="mt-4">
+                    <nav data-toc data-toc-label="On this page (mobile)"></nav>
+                  </div>
+                </details>
+              </div>
+
+              <article class="ss-prose" data-toc-content>
+                <p class="text-lg text-slate-700">
+                  This page is a practical checklist of the silent spreadsheet failure modes that show up in finance models, ops dashboards,
+                  pricing sheets, and any workbook that must be right. Each section includes a safer pattern and how SheetSage detects it today.
+                </p>
+
+                <div class="bg-emerald-50 border border-emerald-200 rounded-2xl p-6">
+                  <h2 id="quick-fixes" class="!mt-0">Safe formulas (copy/paste)</h2>
+                  <p>These are safe defaults when you need exact matches and fail-loud behavior:</p>
+                  <pre><code>=IFNA(VLOOKUP(A2, PriceTable, 2, FALSE), "NOT FOUND")</code></pre>
+                  <pre><code>=IFNA(MATCH(A2, A:A, 0), "NOT FOUND")</code></pre>
+                  <p class="text-sm text-slate-600">
+                    Note: approximate match can be correct for tier bands, but it must be explicit and the table must be sorted.
+                  </p>
+                </div>
+
+                <h2 id="rules">The 5 core rules SheetSage detects today</h2>
+                <p>
+                  SheetSage uses a rule-based scanner to flag common silent-failure patterns, then groups repeated formulas into clusters so you
+                  can fix the pattern once and apply it everywhere (with snapshot rollback).
+                </p>
+
+                <div class="grid md:grid-cols-2 gap-6 not-prose">
+                  <a
+                    href="/vlookup-approximate-match"
+                    class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm hover:shadow-lg transition"
+                  >
+                    <div class="flex items-center justify-between gap-4">
+                      <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-red-50 text-red-600 flex items-center justify-center">
+                          <i data-lucide="search" class="w-5 h-5" aria-hidden="true"></i>
+                        </div>
+                        <div>
+                          <div class="font-extrabold text-slate-900">R1: VLOOKUP match mode</div>
+                          <div class="text-sm text-slate-600">Missing/unsafe 4th argument can return wrong rows.</div>
+                        </div>
+                      </div>
+                      <i data-lucide="arrow-right" class="w-5 h-5 text-slate-400" aria-hidden="true"></i>
+                    </div>
+                  </a>
+
+                  <a
+                    href="/vlookup-column-index-risk"
+                    class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm hover:shadow-lg transition"
+                  >
+                    <div class="flex items-center justify-between gap-4">
+                      <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-amber-50 text-amber-700 flex items-center justify-center">
+                          <i data-lucide="columns" class="w-5 h-5" aria-hidden="true"></i>
+                        </div>
+                        <div>
+                          <div class="font-extrabold text-slate-900">R2: VLOOKUP column index</div>
+                          <div class="text-sm text-slate-600">Hardcoded indexes break after structure changes.</div>
+                        </div>
+                      </div>
+                      <i data-lucide="arrow-right" class="w-5 h-5 text-slate-400" aria-hidden="true"></i>
+                    </div>
+                  </a>
+
+                  <a href="/match-exact-vs-approx" class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm hover:shadow-lg transition">
+                    <div class="flex items-center justify-between gap-4">
+                      <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-indigo-50 text-indigo-700 flex items-center justify-center">
+                          <i data-lucide="locate-fixed" class="w-5 h-5" aria-hidden="true"></i>
+                        </div>
+                        <div>
+                          <div class="font-extrabold text-slate-900">R3: MATCH exactness</div>
+                          <div class="text-sm text-slate-600">Missing <code>,0</code> can shift positions silently.</div>
+                        </div>
+                      </div>
+                      <i data-lucide="arrow-right" class="w-5 h-5 text-slate-400" aria-hidden="true"></i>
+                    </div>
+                  </a>
+
+                  <a
+                    href="/absolute-references-anchor-drift"
+                    class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm hover:shadow-lg transition"
+                  >
+                    <div class="flex items-center justify-between gap-4">
+                      <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-700 flex items-center justify-center">
+                          <i data-lucide="anchor" class="w-5 h-5" aria-hidden="true"></i>
+                        </div>
+                        <div>
+                          <div class="font-extrabold text-slate-900">R4: Reference drift</div>
+                          <div class="text-sm text-slate-600">Unanchored ranges drift when copied across rows.</div>
+                        </div>
+                      </div>
+                      <i data-lucide="arrow-right" class="w-5 h-5 text-slate-400" aria-hidden="true"></i>
+                    </div>
+                  </a>
+
+                  <a
+                    href="/magic-numbers-in-spreadsheets"
+                    class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm hover:shadow-lg transition md:col-span-2"
+                  >
+                    <div class="flex items-center justify-between gap-4">
+                      <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-blue-50 text-blue-700 flex items-center justify-center">
+                          <i data-lucide="wand-2" class="w-5 h-5" aria-hidden="true"></i>
+                        </div>
+                        <div>
+                          <div class="font-extrabold text-slate-900">R5: Magic numbers</div>
+                          <div class="text-sm text-slate-600">Hardcoded constants hide assumptions and break audits.</div>
+                        </div>
+                      </div>
+                      <i data-lucide="arrow-right" class="w-5 h-5 text-slate-400" aria-hidden="true"></i>
+                    </div>
+                  </a>
+                </div>
+
+                <h2 id="r1">R1 — The VLOOKUP match-mode trap</h2>
+                <p>
+                  VLOOKUP can "work" while returning the wrong row when match mode is missing, unsafe, or dynamic. When the 4th argument is
+                  omitted, VLOOKUP behaves like approximate match — which is only correct for specific use cases (like tier bands) and requires
+                  sorted data.
+                </p>
+                <div class="bg-slate-50 border border-slate-200 rounded-2xl p-6 not-prose">
+                  <div class="font-bold text-slate-900 mb-2">Citation block</div>
+                  <p class="mt-0 text-slate-700">
+                    <span class="font-semibold">Definition:</span> a VLOOKUP with missing/unsafe match mode can return a plausible value from the wrong
+                    row.
+                  </p>
+                  <p class="text-slate-700"><span class="font-semibold">Safer default (exact):</span></p>
+                  <pre class="mt-2"><code>=IFNA(VLOOKUP(A2, PriceTable, 2, FALSE), "NOT FOUND")</code></pre>
+                  <p class="text-sm text-slate-600 mt-2">
+                    If approximate match is intentional (tier bands), make it explicit and keep the table sorted.
+                  </p>
+                </div>
+                <p>
+                  Full breakdown: <a href="/vlookup-approximate-match">VLOOKUP approximate match trap</a>. Related:
+                  <a href="/match-exact-vs-approx">MATCH exactness</a>.
+                </p>
+
+                <h2 id="r2">R2 — Column index integrity (the inserted-column disaster)</h2>
+                <p>
+                  Hardcoded column numbers silently shift meaning after structure changes. Your formula still returns a value — just from the wrong
+                  field.
+                </p>
+                <div class="bg-slate-50 border border-slate-200 rounded-2xl p-6 not-prose">
+                  <div class="font-bold text-slate-900 mb-2">Citation block</div>
+                  <p class="mt-0 text-slate-700">
+                    <span class="font-semibold">Definition:</span> invalid/out-of-bounds or brittle VLOOKUP column indexes can return the wrong field
+                    after edits.
+                  </p>
+                  <p class="text-slate-700">
+                    <span class="font-semibold">Best practice:</span> stop counting columns. Match the header, then index the matched column.
+                  </p>
+                </div>
+                <p>
+                  Full breakdown: <a href="/vlookup-column-index-risk">VLOOKUP column index risk</a>. Related:
+                  <a href="/absolute-references-anchor-drift">reference drift</a>.
+                </p>
+
+                <h2 id="r3">R3 — MATCH exactness trap (missing <code>,0</code>)</h2>
+                <p>
+                  MATCH is often used inside INDEX/MATCH. If MATCH returns the wrong position, everything downstream becomes wrong — quietly. The
+                  safest default is exact match: <code>,0</code>.
+                </p>
+                <div class="bg-slate-50 border border-slate-200 rounded-2xl p-6 not-prose">
+                  <div class="font-bold text-slate-900 mb-2">Citation block</div>
+                  <p class="mt-0 text-slate-700"><span class="font-semibold">Safer default:</span></p>
+                  <pre class="mt-2"><code>=IFNA(MATCH(A2, A:A, 0), "NOT FOUND")</code></pre>
+                </div>
+                <p>
+                  Full breakdown: <a href="/match-exact-vs-approx">MATCH exact vs approximate</a>. Related:
+                  <a href="/vlookup-approximate-match">VLOOKUP match mode</a>.
+                </p>
+
+                <h2 id="r4">R4 — Reference drift (anchoring)</h2>
+                <p>
+                  If your lookup ranges are not anchored, copy/paste becomes a slow-motion failure mode. Values still calculate — but ranges "walk"
+                  away from intended data.
+                </p>
+                <div class="bg-slate-50 border border-slate-200 rounded-2xl p-6 not-prose">
+                  <div class="font-bold text-slate-900 mb-2">Citation block</div>
+                  <p class="mt-0 text-slate-700">
+                    <span class="font-semibold">Definition:</span> ranges that shift when copied cause lookups to reference the wrong data over time.
+                  </p>
+                  <p class="text-slate-700"><span class="font-semibold">Safer pattern:</span> anchor stable ranges like <code>$B$5:$C$100</code>.</p>
+                </div>
+                <p>
+                  Full breakdown: <a href="/absolute-references-anchor-drift">absolute references and drift</a>. Related:
+                  <a href="/vlookup-column-index-risk">VLOOKUP column index risk</a>.
+                </p>
+
+                <h2 id="r5">R5 — Magic numbers (hardcoded assumptions)</h2>
+                <p>
+                  Magic numbers hide business assumptions inside formulas. That makes scenarios hard to run ("did we update all instances?") and
+                  audits painful.
+                </p>
+                <div class="bg-slate-50 border border-slate-200 rounded-2xl p-6 not-prose">
+                  <div class="font-bold text-slate-900 mb-2">Citation block</div>
+                  <p class="mt-0 text-slate-700">
+                    <span class="font-semibold">Definition:</span> hardcoded constants in formulas hide assumptions and reduce auditability.
+                  </p>
+                  <p class="text-slate-700">
+                    <span class="font-semibold">Best practice:</span> move assumptions into labeled cells (or named ranges) and reference them.
+                  </p>
+                </div>
+                <p>
+                  Full breakdown: <a href="/magic-numbers-in-spreadsheets">magic numbers in spreadsheets</a>. Related:
+                  <a href="/absolute-references-anchor-drift">reference drift</a>.
+                </p>
+
+                <h2 id="watchlist">Bonus: 2 more silent killers (watchlist)</h2>
+                <p>
+                  These patterns are common spreadsheet failure modes. They are not part of the current core auto-detection set (R1–R5), but you
+                  should still watch for them:
+                </p>
+                <ul>
+                  <li><span class="font-semibold">Circular references:</span> results can vary by iterative calculation settings.</li>
+                  <li><span class="font-semibold">Copy-paste cascades:</span> month 1 is correct, copied 11 times, subtle shifts compound.</li>
+                </ul>
+
+                <h2 id="what-you-get">What you get when you run a SheetSage scan</h2>
+                <ul>
+                  <li>A rule-by-rule breakdown (R1–R5) with counts and severity.</li>
+                  <li>Grouped clusters of similar formulas (fix the pattern once).</li>
+                  <li>Snapshot + restore rollback for changes you apply.</li>
+                </ul>
+
+                <div class="bg-slate-900 text-white rounded-2xl p-8 not-prose">
+                  <div class="text-sm font-semibold text-emerald-200 uppercase tracking-widest">Run it on your sheet</div>
+                  <h2 class="text-3xl font-extrabold mt-3">Find silent errors before they become decisions</h2>
+                  <p class="text-slate-300 mt-3">
+                    Install SheetSage from the Google Workspace Marketplace, run a scan, then decide what to fix (with rollback).
+                  </p>
+                  <div class="mt-6 flex flex-col sm:flex-row gap-3">
+                    <a
+                      href="https://workspace.google.com/marketplace/app/sheetsage/115342178236?flow_type=2"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="inline-flex items-center justify-center gap-2 bg-emerald-500 hover:bg-emerald-600 text-white px-6 py-3 rounded-lg font-bold transition shadow-lg shadow-emerald-900/50"
+                    >
+                      <i data-lucide="download-cloud" class="w-5 h-5" aria-hidden="true"></i>
+                      Install Free
+                    </a>
+                    <a
+                      href="/pricing"
+                      class="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/15 text-white px-6 py-3 rounded-lg font-bold transition border border-white/20"
+                    >
+                      <i data-lucide="tag" class="w-5 h-5" aria-hidden="true"></i>
+                      See pricing
+                    </a>
+                  </div>
+                  <p class="mt-4 text-xs text-slate-400">Always review changes. Snapshot rollback included.</p>
+                </div>
+
+                <h2 id="faq">FAQ</h2>
+                <div class="space-y-4 not-prose">
+                  <details class="ss-accordion group bg-white border border-slate-200 rounded-2xl p-6">
+                    <summary class="flex items-center justify-between gap-4 cursor-pointer">
+                      <span class="text-lg font-bold text-slate-900">Why do spreadsheets return the wrong value with no error?</span>
+                      <i data-lucide="chevron-down" class="ss-accordion-icon w-5 h-5 text-slate-500 shrink-0" aria-hidden="true"></i>
+                    </summary>
+                    <p class="mt-4 text-slate-600">
+                      Many formula patterns fail politely: the output is plausible even when it is wrong (approximate matching, drifted ranges, or
+                      shifted column meanings).
+                    </p>
+                  </details>
+
+                  <details class="ss-accordion group bg-white border border-slate-200 rounded-2xl p-6">
+                    <summary class="flex items-center justify-between gap-4 cursor-pointer">
+                      <span class="text-lg font-bold text-slate-900">Do I always need FALSE in VLOOKUP?</span>
+                      <i data-lucide="chevron-down" class="ss-accordion-icon w-5 h-5 text-slate-500 shrink-0" aria-hidden="true"></i>
+                    </summary>
+                    <p class="mt-4 text-slate-600">
+                      If you want exact matching, yes: be explicit. If approximate matching is intentional (tier bands), keep it explicit and keep
+                      the table sorted.
+                    </p>
+                  </details>
+
+                  <details class="ss-accordion group bg-white border border-slate-200 rounded-2xl p-6">
+                    <summary class="flex items-center justify-between gap-4 cursor-pointer">
+                      <span class="text-lg font-bold text-slate-900">Does SheetSage send my spreadsheet data anywhere?</span>
+                      <i data-lucide="chevron-down" class="ss-accordion-icon w-5 h-5 text-slate-500 shrink-0" aria-hidden="true"></i>
+                    </summary>
+                    <p class="mt-4 text-slate-600">
+                      Spreadsheet content is designed to stay inside Google Sheets. If you upgrade, subscription checks send only an anonymous
+                      client ID (no formulas, values, sheet names, or cell addresses).
+                    </p>
+                  </details>
+
+                  <details class="ss-accordion group bg-white border border-slate-200 rounded-2xl p-6">
+                    <summary class="flex items-center justify-between gap-4 cursor-pointer">
+                      <span class="text-lg font-bold text-slate-900">What does SheetSage fix automatically?</span>
+                      <i data-lucide="chevron-down" class="ss-accordion-icon w-5 h-5 text-slate-500 shrink-0" aria-hidden="true"></i>
+                    </summary>
+                    <p class="mt-4 text-slate-600">
+                      Some fixes are safe and automated (like appending <code>,0</code> for missing MATCH exactness). Others require review or
+                      confirmation when intent matters (like enforcing VLOOKUP exact match).
+                    </p>
+                  </details>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div
+      id="stickyCta"
+      class="hidden fixed bottom-4 inset-x-4 z-[70] max-w-3xl mx-auto bg-white border border-slate-200 rounded-2xl shadow-xl p-3 sm:p-4"
+      role="region"
+      aria-label="Install SheetSage"
+      data-sticky-cta
+    >
+      <div class="flex items-center justify-between gap-3">
+        <div class="min-w-0">
+          <div class="text-sm font-extrabold text-slate-900 truncate">Run a free scan in Google Sheets</div>
+          <div class="text-xs text-slate-600 truncate">Install SheetSage. Scan → fixes → snapshot rollback.</div>
+        </div>
+        <div class="flex items-center gap-2 shrink-0">
+          <a
+            href="https://workspace.google.com/marketplace/app/sheetsage/115342178236?flow_type=2"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 rounded-xl font-bold text-sm transition"
+          >
+            Install
+          </a>
+          <button
+            type="button"
+            class="inline-flex items-center justify-center w-10 h-10 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 transition"
+            aria-label="Dismiss"
+            data-sticky-cta-dismiss
+          >
+            <i data-lucide="x" class="w-5 h-5 text-slate-700" aria-hidden="true"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <footer class="bg-white border-t border-slate-200 py-12">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+          <a href="/" class="flex items-center gap-2">
+            <div class="w-6 h-6 bg-emerald-600 rounded flex items-center justify-center text-white font-bold text-xs" aria-hidden="true">
+              S
+            </div>
+            <span class="font-bold text-slate-800">SheetSage</span>
+          </a>
+          <div class="flex flex-wrap justify-center gap-x-8 gap-y-2 text-sm text-slate-500">
+            <a href="/pricing" class="hover:text-emerald-600 transition">Pricing</a>
+            <a href="/silent-spreadsheet-errors" class="hover:text-emerald-600 transition">Guides</a>
+            <a href="/#how-it-works" class="hover:text-emerald-600 transition">How it works</a>
+            <a href="/privacy" class="hover:text-emerald-600 transition">Privacy</a>
+            <a href="/terms" class="hover:text-emerald-600 transition">Terms</a>
+            <a href="mailto:hello@sheetsage.co" class="hover:text-emerald-600 transition">Contact</a>
+          </div>
+          <div class="text-sm text-slate-400">&copy; <span data-year></span> SheetSage. All rights reserved.</div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

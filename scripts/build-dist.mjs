@@ -67,6 +67,21 @@ function htmlFileToRoute(htmlFile) {
   return `/${path.basename(htmlFile, ".html")}`;
 }
 
+async function discoverHtmlFiles() {
+  const entries = await fs.readdir(ROOT, { withFileTypes: true });
+  const htmlFiles = entries
+    .filter((entry) => entry.isFile() && entry.name.toLowerCase().endsWith(".html"))
+    .map((entry) => entry.name);
+
+  htmlFiles.sort((a, b) => {
+    if (a === "index.html") return -1;
+    if (b === "index.html") return 1;
+    return a.localeCompare(b);
+  });
+
+  return htmlFiles;
+}
+
 async function generateSitemap({ htmlFiles }) {
   const configuredSiteUrl = normalizeSiteUrl(process.env.SITE_URL);
   const productionFallbackSiteUrl =
@@ -98,9 +113,16 @@ async function generateSitemap({ htmlFiles }) {
     } else if (route === "/pricing") {
       changefreq = "monthly";
       priority = "0.8";
+    } else if (route === "/silent-spreadsheet-errors") {
+      changefreq = "monthly";
+      priority = "0.9";
     } else if (route === "/privacy" || route === "/terms") {
       changefreq = "yearly";
       priority = "0.3";
+    } else {
+      // Guides and other evergreen marketing pages.
+      changefreq = "monthly";
+      priority = "0.7";
     }
 
     const loc = `${siteUrl}${route === "/" ? "/" : route}`;
@@ -142,7 +164,10 @@ async function main() {
   }
   await fs.mkdir(DIST, { recursive: true });
 
-  const htmlFiles = ["index.html", "pricing.html", "privacy.html", "terms.html"];
+  const htmlFiles = await discoverHtmlFiles();
+  if (!htmlFiles.includes("index.html")) {
+    throw new Error("[build-dist] Could not find index.html in project root.");
+  }
 
   const cacheBustedAssets = ["assets/tailwind.css", "assets/site.css", "assets/site.js"];
   const assetMapping = new Map();
@@ -158,6 +183,9 @@ async function main() {
     "assets/favicon.svg",
     "assets/demo-poster.svg",
     "assets/demo.mp4",
+    "assets/og.png",
+    "assets/logo.png",
+    "assets/logo-wordmark.png",
     "assets/vendor/lucide.min.js",
   ];
 

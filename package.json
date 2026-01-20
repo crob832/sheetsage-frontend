@@ -9,6 +9,7 @@
   "scripts": {
     "build:css": "tailwindcss -c tailwind.config.js -i assets/tailwind.input.css -o assets/tailwind.css --minify",
     "build": "npm run build:css && node scripts/build-dist.mjs",
-    "dev": "tailwindcss -c tailwind.config.js -i assets/tailwind.input.css -o assets/tailwind.css --watch"
+    "dev": "tailwindcss -c tailwind.config.js -i assets/tailwind.input.css -o assets/tailwind.css --watch",
+    "update:csp-hashes": "node scripts/update-csp-hashes.mjs"
   }
 }
