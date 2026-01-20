@@ -16,6 +16,23 @@ Static website pages for SheetSage.
   - `absolute-references-anchor-drift.html` (R4)
   - `magic-numbers-in-spreadsheets.html` (R5)
 
+## SEO Implementation Notes
+
+- **Clean URLs**: `vercel.json` uses `cleanUrls: true` so `/pricing` serves `pricing.html`.
+- **Sitemap/robots**: generated during build and includes all `*.html` pages automatically.
+- **Meta**: pages include canonical + OpenGraph + Twitter card tags.
+- **Structured data**: pages include JSON-LD; CSP is updated with sha256 hashes (no `unsafe-inline`).
+- **UX on guides**: auto-generated on-page TOC (`data-toc`) + sticky “Run a free scan” CTA after ~20% scroll.
+- **OG image**: `assets/og.png` is referenced by OG/Twitter meta and copied to `dist/`.
+
+### If you edit JSON-LD
+
+Whenever you change a `<script type="application/ld+json">...</script>` block, regenerate CSP hashes:
+
+```powershell
+npm run update:csp-hashes
+```
+
 ## Sitemap + robots
 
 The build generates:
@@ -48,6 +65,9 @@ Then visit `http://localhost:5173/`.
   - `assets/site.css`
   - `assets/site.js`
   - `assets/favicon.svg`
+  - `assets/og.png`
+  - `assets/logo.png`
+  - `assets/logo-wordmark.png`
   - `assets/demo-poster.svg`
   - `assets/vendor/lucide.min.js`
 
