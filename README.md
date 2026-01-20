@@ -9,6 +9,15 @@ Static website pages for SheetSage.
 - `privacy.html` - privacy policy
 - `terms.html` - terms of service
 
+## Sitemap + robots
+
+The build generates:
+- `dist/sitemap.xml`
+- `dist/robots.txt` (points at `.../sitemap.xml`)
+
+To control the sitemap hostname (recommended for SEO), set `SITE_URL` (e.g. `https://example.com`).
+If unset, the build falls back to `VERCEL_URL` (when available) or `http://localhost:5173`.
+
 ## Local preview
 
 Build and run a local web server:
