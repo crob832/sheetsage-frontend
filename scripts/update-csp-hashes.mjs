@@ -51,6 +51,16 @@ function extractJsonLdScripts(html) {
   return matches;
 }
 
+function extractCspHashedInlineScripts(html) {
+  const matches = [];
+  const re = /<script\b(?![^>]*\bsrc=)[^>]*\bdata-csp-hash(?:\s*=\s*["'][^"']*["'])?[^>]*>([\s\S]*?)<\/script>/gi;
+  let match;
+  while ((match = re.exec(html))) {
+    matches.push(match[1]);
+  }
+  return matches;
+}
+
 function sha256Base64(text) {
   return crypto.createHash("sha256").update(text, "utf8").digest("base64");
 }
@@ -61,7 +71,7 @@ async function main() {
 
   for (const htmlFile of htmlFiles) {
     const html = await fs.readFile(path.join(ROOT, htmlFile), "utf8");
-    const scripts = extractJsonLdScripts(html);
+    const scripts = [...extractJsonLdScripts(html), ...extractCspHashedInlineScripts(html)];
     for (const scriptText of scripts) {
       const normalized = normalizeLineEndings(scriptText);
       hashes.add(`'sha256-${sha256Base64(normalized)}'`);
@@ -70,7 +80,7 @@ async function main() {
 
   const sortedHashes = Array.from(hashes).sort((a, b) => a.localeCompare(b));
   if (sortedHashes.length === 0) {
-    console.warn("[update-csp-hashes] No JSON-LD scripts found; skipping CSP update.");
+    console.warn("[update-csp-hashes] No inline scripts found; skipping CSP update.");
     return;
   }
 
@@ -102,4 +112,3 @@ async function main() {
 }
 
 await main();
-
