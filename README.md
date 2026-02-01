@@ -9,6 +9,7 @@ Static website pages for SheetSage.
 - `privacy.html` - privacy policy
 - `terms.html` - terms of service
 - `sheetsage-vs-manual-auditing.html` - comparison page (SheetSage vs manual auditing)
+- `spreadsheet-audit-checklist.html` - checklist + template landing page
 - Guides:
   - `silent-spreadsheet-errors.html` (pillar)
   - `vlookup-approximate-match.html` (R1)

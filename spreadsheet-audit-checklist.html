@@ -1,0 +1,467 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Spreadsheet Audit Checklist Template | SheetSage</title>
+    <meta
+      name="description"
+      content="Free spreadsheet audit checklist template (Silent Failure Edition) to catch common silent errors: lookup fragility, reference drift, column brittleness, and magic numbers."
+    />
+    <link rel="canonical" href="https://sheetsage.co/spreadsheet-audit-checklist" />
+    <meta name="robots" content="index,follow" />
+    <meta name="theme-color" content="#059669" />
+
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="SheetSage" />
+    <meta property="og:title" content="Spreadsheet Audit Checklist Template" />
+    <meta
+      property="og:description"
+      content="A free audit kit: checklist + quick risk score + repeatable procedure to catch silent spreadsheet failures."
+    />
+    <meta property="og:url" content="https://sheetsage.co/spreadsheet-audit-checklist" />
+    <meta property="og:image" content="https://sheetsage.co/assets/og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Spreadsheet Audit Checklist Template" />
+    <meta name="twitter:description" content="A free audit kit to catch silent spreadsheet failures (R1–R5)." />
+    <meta name="twitter:image" content="https://sheetsage.co/assets/og.png" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Organization",
+            "@id": "https://sheetsage.co/#organization",
+            "name": "SheetSage",
+            "url": "https://sheetsage.co/",
+            "logo": { "@type": "ImageObject", "url": "https://sheetsage.co/assets/logo.png" }
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://sheetsage.co/#website",
+            "url": "https://sheetsage.co/",
+            "name": "SheetSage",
+            "inLanguage": "en",
+            "publisher": { "@id": "https://sheetsage.co/#organization" }
+          },
+          {
+            "@type": "BreadcrumbList",
+            "@id": "https://sheetsage.co/spreadsheet-audit-checklist#breadcrumb",
+            "itemListElement": [
+              { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://sheetsage.co/" },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Spreadsheet Audit Checklist",
+                "item": "https://sheetsage.co/spreadsheet-audit-checklist"
+              }
+            ]
+          },
+          {
+            "@type": "Article",
+            "@id": "https://sheetsage.co/spreadsheet-audit-checklist#article",
+            "headline": "Spreadsheet Audit Checklist Template (Silent Failure Edition)",
+            "description": "A free audit kit: checklist + quick risk score + repeatable procedure to catch silent spreadsheet failures.",
+            "inLanguage": "en",
+            "image": "https://sheetsage.co/assets/og.png",
+            "author": { "@id": "https://sheetsage.co/#organization" },
+            "publisher": { "@id": "https://sheetsage.co/#organization" },
+            "mainEntityOfPage": { "@type": "WebPage", "@id": "https://sheetsage.co/spreadsheet-audit-checklist" },
+            "isPartOf": { "@id": "https://sheetsage.co/#website" }
+          }
+        ]
+      }
+    </script>
+
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="assets/tailwind.css" />
+    <link rel="stylesheet" href="assets/site.css" />
+    <script src="assets/vendor/lucide.min.js" defer></script>
+    <script src="assets/site.js" defer></script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-E3KV9DS6PR"></script>
+    <script data-csp-hash="ga4">
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-E3KV9DS6PR');
+    </script>
+    <script defer src="/_vercel/insights/script.js"></script>
+  </head>
+
+  <body class="bg-slate-50 text-slate-900 antialiased">
+    <a
+      href="#content"
+      class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[60] focus:bg-white focus:border focus:border-emerald-200 focus:text-emerald-700 focus:px-4 focus:py-2 focus:rounded-lg focus:shadow"
+      >Skip to content</a
+    >
+
+    <nav class="fixed w-full z-50 bg-white/80 backdrop-blur-md border-b border-slate-200">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+          <a href="/" class="flex items-center gap-2">
+            <div class="w-8 h-8 bg-emerald-600 rounded-lg flex items-center justify-center text-white font-bold text-xl" aria-hidden="true">
+              S
+            </div>
+            <span class="font-bold text-xl tracking-tight text-slate-800">SheetSage</span>
+          </a>
+
+          <div class="hidden md:flex items-center space-x-8">
+            <a href="/#features" class="text-slate-600 hover:text-emerald-600 font-medium transition">Features</a>
+            <a href="/#how-it-works" class="text-slate-600 hover:text-emerald-600 font-medium transition">How it Works</a>
+            <a href="/#demo" class="text-slate-600 hover:text-emerald-600 font-medium transition">Demo</a>
+            <a href="/pricing" class="text-slate-600 hover:text-emerald-600 font-medium transition">Pricing</a>
+            <a href="/sheetsage-vs-manual-auditing" class="text-slate-600 hover:text-emerald-600 font-medium transition">Compare</a>
+            <a href="/silent-spreadsheet-errors" class="text-slate-600 hover:text-emerald-600 font-medium transition">Guides</a>
+          </div>
+
+          <div class="flex items-center gap-3">
+            <a
+              href="/install"
+              class="hidden sm:inline-flex items-center justify-center bg-emerald-600 hover:bg-emerald-700 text-white px-5 py-2 rounded-full font-semibold transition shadow"
+              >Install Free</a
+            >
+
+            <button
+              id="mobileMenuButton"
+              type="button"
+              class="md:hidden inline-flex items-center justify-center w-10 h-10 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 transition"
+              aria-controls="mobileMenu"
+              aria-expanded="false"
+              aria-label="Open menu"
+            >
+              <i data-lucide="menu" class="w-5 h-5 text-slate-700" aria-hidden="true"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div id="mobileMenuOverlay" class="hidden fixed inset-0 bg-slate-900/30 backdrop-blur-[2px] md:hidden" aria-hidden="true"></div>
+      <div id="mobileMenu" class="hidden md:hidden fixed top-16 inset-x-0 bg-white border-b border-slate-200 shadow-lg" role="dialog" aria-label="Menu">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col gap-3">
+          <a href="/#features" class="text-slate-700 font-semibold hover:text-emerald-700 transition">Features</a>
+          <a href="/#how-it-works" class="text-slate-700 font-semibold hover:text-emerald-700 transition">How it Works</a>
+          <a href="/#demo" class="text-slate-700 font-semibold hover:text-emerald-700 transition">Demo</a>
+          <a href="/pricing" class="text-slate-700 font-semibold hover:text-emerald-700 transition">Pricing</a>
+          <a href="/sheetsage-vs-manual-auditing" class="text-slate-700 font-semibold hover:text-emerald-700 transition">Compare</a>
+          <a href="/silent-spreadsheet-errors" class="text-slate-700 font-semibold hover:text-emerald-700 transition">Guides</a>
+          <a href="/privacy" class="text-slate-700 font-semibold hover:text-emerald-700 transition">Privacy</a>
+          <a href="/terms" class="text-slate-700 font-semibold hover:text-emerald-700 transition">Terms</a>
+          <a href="/install" class="mt-2 inline-flex items-center justify-center bg-emerald-600 hover:bg-emerald-700 text-white px-5 py-2 rounded-xl font-bold transition"
+            >Install Free</a
+          >
+        </div>
+      </div>
+    </nav>
+
+    <main id="content" class="pt-24">
+      <section class="py-14 lg:py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="max-w-3xl">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-100 text-emerald-700 text-sm font-extrabold">
+              <i data-lucide="check-square" class="w-4 h-4" aria-hidden="true"></i>
+              <span>Free audit kit</span>
+            </div>
+
+            <h1 class="mt-5 text-4xl sm:text-5xl font-extrabold tracking-tight text-slate-900">Spreadsheet Audit Checklist Template</h1>
+            <p class="mt-5 text-lg text-slate-600 leading-relaxed">
+              Catch the spreadsheet errors that look correct. This page is a template-first utility hub: a checklist, a 60-second risk score, and a
+              repeatable audit procedure (Silent Failure Edition).
+            </p>
+            <p class="mt-4 text-sm text-slate-500">
+              Want the deeper story (why manual audits miss silent failures)? Read
+              <a class="font-semibold text-emerald-700 hover:underline" href="/sheetsage-vs-manual-auditing">SheetSage vs Manual Auditing</a>.
+            </p>
+
+            <div id="download" class="mt-7 grid sm:grid-cols-3 gap-3">
+              <a
+                href="#download"
+                class="inline-flex items-center justify-center gap-2 bg-white hover:bg-slate-50 text-slate-700 border border-slate-300 px-5 py-3 rounded-xl font-extrabold transition"
+                aria-disabled="true"
+                title="Template link placeholder"
+              >
+                <i data-lucide="file-down" class="w-5 h-5" aria-hidden="true"></i>
+                Download template (example)
+              </a>
+              <a
+                href="#download"
+                class="inline-flex items-center justify-center gap-2 bg-white hover:bg-slate-50 text-slate-700 border border-slate-300 px-5 py-3 rounded-xl font-extrabold transition"
+                aria-disabled="true"
+                title="Example workbook link placeholder"
+              >
+                <i data-lucide="book-open" class="w-5 h-5" aria-hidden="true"></i>
+                Open example workbook (example)
+              </a>
+              <a
+                href="/install"
+                class="inline-flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white px-5 py-3 rounded-xl font-extrabold transition shadow"
+              >
+                <i data-lucide="scan" class="w-5 h-5" aria-hidden="true"></i>
+                Install SheetSage
+              </a>
+            </div>
+
+            <p class="mt-4 text-sm text-slate-500">
+              Template links are placeholders for now; the page structure + audit flow are ready. (Install works via <code>/install</code> redirect.)
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="grid lg:grid-cols-[280px_1fr] gap-10">
+            <aside class="lg:sticky lg:top-24 h-fit">
+              <div class="bg-white border border-slate-200 rounded-2xl p-5">
+                <div class="text-sm font-extrabold text-slate-900">On this page</div>
+                <div class="mt-3" data-toc data-toc-label="Table of contents"></div>
+                <div class="mt-5 pt-5 border-t border-slate-200">
+                  <a
+                    href="/install"
+                    class="inline-flex items-center justify-center w-full gap-2 bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 rounded-xl font-extrabold transition"
+                  >
+                    <i data-lucide="download-cloud" class="w-4 h-4" aria-hidden="true"></i>
+                    Install Free
+                  </a>
+                  <a
+                    href="/pricing"
+                    class="mt-3 inline-flex items-center justify-center w-full gap-2 bg-slate-900 hover:bg-slate-700 text-white px-4 py-2 rounded-xl font-extrabold transition"
+                  >
+                    <i data-lucide="tag" class="w-4 h-4" aria-hidden="true"></i>
+                    Pricing
+                  </a>
+                </div>
+              </div>
+            </aside>
+
+            <article class="min-w-0">
+              <div class="bg-white border border-slate-200 rounded-2xl p-6 sm:p-10">
+                <div class="ss-prose" data-toc-content>
+                  <h2 id="quick-start">Quick start (10–15 minutes)</h2>
+                  <ol>
+                    <li>Make a copy of the template.</li>
+                    <li>Run the 60-second risk score.</li>
+                    <li>Audit in priority order: R1/R3 → R4 → R5 → R2.</li>
+                    <li>Log fixes (what changed, why, and how you validated it).</li>
+                    <li>Re-check outputs (sanity tests + edge-case tests).</li>
+                  </ol>
+                  <p>
+                    The goal isn’t perfection. The goal is to eliminate the most common silent failure patterns systematically.
+                  </p>
+
+                  <h2 id="risk-score">60-second silent failure risk score</h2>
+                  <p>Tick what’s true for your workbook. Score 1 point for each “Yes”.</p>
+                  <ul>
+                    <li>We use lookups (VLOOKUP / MATCH / INDEX-MATCH) and don’t always enforce exactness.</li>
+                    <li>We hardcode column positions (e.g., “3” to mean column C).</li>
+                    <li>We copy/drag formulas across months, regions, or product lines.</li>
+                    <li>People insert columns/rows into model tables over time.</li>
+                    <li>We have constants inside formulas (<code>*1.08</code>, <code>*0.9</code>, <code>+500</code>, <code>-2</code>).</li>
+                    <li>Multiple people edit this workbook.</li>
+                    <li>We validate by comparing to last month more than by test cases.</li>
+                    <li>We have hidden/helper tabs.</li>
+                    <li>Assumptions aren’t centralized into a single “Inputs” tab.</li>
+                    <li>A spreadsheet mistake here would change a real decision (pricing, payroll, inventory, close, forecast).</li>
+                  </ul>
+                  <p><strong>Interpretation:</strong></p>
+                  <ul>
+                    <li><strong>0–2 (Low):</strong> Keep it disciplined. Still audit before sign-off.</li>
+                    <li><strong>3–5 (Medium):</strong> Silent failures are likely present.</li>
+                    <li><strong>6–10 (High):</strong> You’re running a production system with thin guardrails.</li>
+                  </ul>
+
+                  <h2 id="template-preview">What’s inside the template (preview)</h2>
+                  <h3>Tab 1 — <code>START_HERE</code></h3>
+                  <ul>
+                    <li>Workbook name, owner, audit date</li>
+                    <li>Criticality (Low / Medium / High)</li>
+                    <li>What this workbook is used for (pricing, payroll, close, etc.)</li>
+                  </ul>
+                  <h3>Tab 2 — <code>RISK_SCORE</code></h3>
+                  <ul>
+                    <li>Your 0–10 score</li>
+                    <li>Risk band (Low/Med/High)</li>
+                    <li>Fix-first recommendation (auto)</li>
+                  </ul>
+                  <h3>Tab 3 — <code>CHECKLIST_R1_R5</code></h3>
+                  <ul>
+                    <li><strong>Rule</strong> (R1–R5)</li>
+                    <li><strong>Where found</strong> (tab name + area description)</li>
+                    <li><strong>Why it’s risky</strong> (picklist)</li>
+                    <li><strong>Severity</strong> (Critical/High/Med/Low)</li>
+                    <li><strong>Fix decision</strong> (Fix now / Fix later / Accept risk)</li>
+                    <li><strong>Validation test</strong> (what you ran to confirm)</li>
+                    <li><strong>Notes</strong></li>
+                  </ul>
+                  <h3>Tab 4 — <code>FIX_LOG</code></h3>
+                  <ul>
+                    <li>Date / owner</li>
+                    <li>Change summary</li>
+                    <li>Before/after output check (pass/fail)</li>
+                    <li>Rollback plan</li>
+                    <li>Links to evidence (screenshots, comments, exports)</li>
+                  </ul>
+                  <h3>Tab 5 — <code>SIGN_OFF</code></h3>
+                  <ul>
+                    <li>What changed</li>
+                    <li>What was validated</li>
+                    <li>Remaining risks accepted</li>
+                    <li>Final reviewer name + date</li>
+                  </ul>
+
+                  <h2 id="procedure">The audit procedure</h2>
+                  <h3>Step 1 — Identify the workbook type</h3>
+                  <p>Pick one: pricing/quoting, payroll/commissions, inventory planning, monthly close reporting, forecasting/budgeting, other.</p>
+                  <p><strong>Then do one sanity check immediately:</strong> “What output is most sensitive to being wrong?” Log it as your primary output.</p>
+
+                  <h3>Step 2 — Run the “3 tests” (fast validation)</h3>
+                  <ul>
+                    <li><strong>Test A: Boundary check</strong> (first/last/smallest/largest; does it behave at edges?)</li>
+                    <li><strong>Test B: Missing-key check</strong> (what happens when a lookup key doesn’t exist?)</li>
+                    <li><strong>Test C: Structure-change check</strong> (in a copy: insert a column into a key table; do results silently change?)</li>
+                  </ul>
+                  <p>Log pass/fail in <code>FIX_LOG</code>. These tests become your proof later.</p>
+
+                  <h3>Step 3 — Audit in the highest-impact order</h3>
+                  <h4>R1 / R3: Lookup fragility (highest frequency + highest cost)</h4>
+                  <ul>
+                    <li><strong>Validate:</strong> run Test B (missing keys) and Test A (boundaries); try unsorted data in a copy if sorting is assumed.</li>
+                    <li><strong>Rule of thumb:</strong> for pricing/payroll/close sheets, treat unsafe lookup behavior as Critical.</li>
+                  </ul>
+                  <h4>R4: Reference drift (silent misalignment)</h4>
+                  <ul>
+                    <li><strong>Validate:</strong> copy a block down 10–20 rows in a copy and compare totals.</li>
+                    <li><strong>Rule of thumb:</strong> if it touches totals, drift is usually High.</li>
+                  </ul>
+                  <h4>R5: Magic numbers (assumption debt)</h4>
+                  <ul>
+                    <li><strong>Validate:</strong> change the policy number in one place—does the workbook update cleanly?</li>
+                    <li><strong>Fix rule:</strong> centralize assumptions into an Inputs tab and reference them consistently.</li>
+                  </ul>
+                  <h4>R2: Column index brittleness (structure-change time bomb)</h4>
+                  <ul>
+                    <li><strong>Validate:</strong> run Test C in a copy and compare outputs.</li>
+                    <li><strong>Rule of thumb:</strong> if the workbook evolves monthly, R2 is usually High even if it “works today”.</li>
+                  </ul>
+
+                  <h2 id="playbook">Fix playbook (copy/paste)</h2>
+                  <p>Use consistent notes so the audit log stays clean across teams.</p>
+                  <ul>
+                    <li><strong>If you find R1/R3:</strong> “Lookup exactness not enforced. Ran missing-key and boundary tests. Updated logic to fail loudly on missing keys.”</li>
+                    <li><strong>If you find R4:</strong> “Reference drift risk in copied block. Validated by copying rows in sandbox and comparing totals. Anchored fixed inputs.”</li>
+                    <li><strong>If you find R5:</strong> “Magic number representing a policy assumption. Centralized to Inputs and replaced constants with references.”</li>
+                    <li><strong>If you find R2:</strong> “Hardcoded column index depends on table structure. Validated by inserting a column in sandbox and observing output change.”</li>
+                  </ul>
+
+                  <h2 id="decision-tree">The fix-first decision tree</h2>
+                  <ol>
+                    <li>Does this workbook affect real money or decisions? If yes, proceed.</li>
+                    <li>Are there lookups anywhere? If yes, fix R1/R3 first.</li>
+                    <li>Is anything copied across months/regions? If yes, fix R4 next.</li>
+                    <li>Are there embedded constants representing policy? If yes, fix R5 next.</li>
+                    <li>Do tables get columns inserted over time? If yes, fix R2 next.</li>
+                  </ol>
+
+                  <h2 id="privacy">Privacy &amp; data handling (short)</h2>
+                  <p>
+                    This kit is just a template. If you’re using SheetSage: by default, no spreadsheet content is transmitted externally; operational
+                    data stays local unless you enable optional features. Full details link to <a href="/permissions-privacy-metrics">permissions/privacy</a>.
+                  </p>
+
+                  <h2 id="faq">FAQ</h2>
+                  <h3>Is this only for Google Sheets?</h3>
+                  <p>The checklist is written for Google Sheets workflows. The same logic applies to Excel, but function specifics differ.</p>
+                  <h3>How often should we do this?</h3>
+                  <ul>
+                    <li>High-stakes sheets: before every sign-off</li>
+                    <li>Medium-stakes: quarterly, or after structural changes</li>
+                    <li>Low-stakes: when the workbook changes owners</li>
+                  </ul>
+
+                  <h2 id="related">Related</h2>
+                  <ul>
+                    <li><a href="/sheetsage-vs-manual-auditing">Why manual audits miss silent failures</a></li>
+                    <li><a href="/silent-spreadsheet-errors">The 5 silent spreadsheet errors</a></li>
+                    <li><a href="/permissions-privacy-metrics">Permissions, privacy &amp; metrics</a></li>
+                    <li><a href="/install">Install</a></li>
+                  </ul>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="install" class="py-24 bg-slate-900 text-white relative overflow-hidden">
+        <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMiIgY3k9IjIiIHI9IjIiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC4wNSkiLz48L3N2Zz4=')] opacity-20"></div>
+        <div class="max-w-4xl mx-auto px-4 text-center relative z-10">
+          <h2 class="text-4xl font-bold mb-6">Run a scan in Google Sheets</h2>
+          <p class="text-xl text-slate-300 mb-10">Install SheetSage and use the checklist as your audit log.</p>
+          <div class="flex flex-col sm:flex-row justify-center gap-4">
+            <a href="/install" class="bg-emerald-500 hover:bg-emerald-600 text-white px-8 py-4 rounded-lg font-bold text-lg transition shadow-lg shadow-emerald-900/50">
+              Install Free
+            </a>
+            <a href="/pricing" class="bg-white/10 hover:bg-white/15 text-white px-8 py-4 rounded-lg font-bold text-lg transition border border-white/20">
+              See pricing
+            </a>
+          </div>
+          <p class="mt-6 text-sm text-slate-400">Requires Google Sheets — No credit card required</p>
+        </div>
+      </section>
+    </main>
+
+    <div
+      id="stickyCta"
+      class="hidden fixed bottom-4 inset-x-4 z-[70] max-w-3xl mx-auto bg-white border border-slate-200 rounded-2xl shadow-xl p-3 sm:p-4"
+      role="region"
+      aria-label="Install SheetSage"
+      data-sticky-cta
+    >
+      <div class="flex items-center justify-between gap-3">
+        <div class="min-w-0">
+          <div class="text-sm font-extrabold text-slate-900 truncate">Install SheetSage and run a free scan</div>
+          <div class="text-xs text-slate-600 truncate">Use the checklist as your audit log. Scan → fixes → snapshot rollback.</div>
+        </div>
+        <div class="flex items-center gap-2 shrink-0">
+          <a href="/install" class="inline-flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 rounded-xl font-bold text-sm transition">
+            Install
+          </a>
+          <button
+            type="button"
+            class="inline-flex items-center justify-center w-10 h-10 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 transition"
+            aria-label="Dismiss"
+            data-sticky-cta-dismiss
+          >
+            <i data-lucide="x" class="w-5 h-5 text-slate-700" aria-hidden="true"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <footer class="bg-white border-t border-slate-200 py-12">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+          <a href="/" class="flex items-center gap-2">
+            <div class="w-6 h-6 bg-emerald-600 rounded flex items-center justify-center text-white font-bold text-xs" aria-hidden="true">S</div>
+            <span class="font-bold text-slate-800">SheetSage</span>
+          </a>
+          <div class="flex flex-wrap justify-center gap-x-8 gap-y-2 text-sm text-slate-500">
+            <a href="/pricing" class="hover:text-emerald-600 transition">Pricing</a>
+            <a href="/sheetsage-vs-manual-auditing" class="hover:text-emerald-600 transition">Compare</a>
+            <a href="/silent-spreadsheet-errors" class="hover:text-emerald-600 transition">Guides</a>
+            <a href="/privacy" class="hover:text-emerald-600 transition">Privacy</a>
+            <a href="/terms" class="hover:text-emerald-600 transition">Terms</a>
+            <a href="mailto:hello@sheetsage.co" class="hover:text-emerald-600 transition">Contact</a>
+          </div>
+          <div class="text-sm text-slate-400">&copy; <span data-year></span> SheetSage. All rights reserved.</div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
+
