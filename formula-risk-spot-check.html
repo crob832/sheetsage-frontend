@@ -1,0 +1,352 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>$10 Formula Risk Spot-Check | SheetSage</title>
+    <meta
+      name="description"
+      content="Get a one-off $10 spreadsheet formula risk spot-check for a Google Sheet or Excel workbook, with prioritized findings and practical next steps."
+    />
+    <link rel="canonical" href="https://sheetsage.co/formula-risk-spot-check" />
+    <meta name="robots" content="index,follow" />
+    <meta name="theme-color" content="#059669" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="SheetSage" />
+    <meta property="og:title" content="$10 Formula Risk Spot-Check | SheetSage" />
+    <meta
+      property="og:description"
+      content="A small, one-off spreadsheet audit: pay $10, send one sheet/workbook, get prioritized formula-risk findings."
+    />
+    <meta property="og:url" content="https://sheetsage.co/formula-risk-spot-check" />
+    <meta property="og:image" content="https://sheetsage.co/assets/og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="$10 Formula Risk Spot-Check | SheetSage" />
+    <meta
+      name="twitter:description"
+      content="Send one spreadsheet and get a concise formula-risk review for $10."
+    />
+    <meta name="twitter:image" content="https://sheetsage.co/assets/og.png" />
+
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="assets/tailwind.css" />
+    <link rel="stylesheet" href="assets/site.css" />
+    <script src="assets/vendor/lucide.min.js" defer></script>
+    <script src="assets/site.js" defer></script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-E3KV9DS6PR"></script>
+    <script data-csp-hash="ga4">
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-E3KV9DS6PR');
+    </script>
+    <script defer src="/_vercel/insights/script.js"></script>
+  </head>
+
+  <body class="bg-slate-50 text-slate-900 antialiased">
+    <a
+      href="#content"
+      class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[60] focus:bg-white focus:border focus:border-emerald-200 focus:text-emerald-700 focus:px-4 focus:py-2 focus:rounded-lg focus:shadow"
+      >Skip to content</a
+    >
+
+    <nav class="fixed w-full z-50 bg-white/80 backdrop-blur-md border-b border-slate-200">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+          <a href="/" class="flex items-center gap-2">
+            <div
+              class="w-8 h-8 bg-emerald-600 rounded-lg flex items-center justify-center text-white font-bold text-xl"
+              aria-hidden="true"
+            >
+              S
+            </div>
+            <span class="font-bold text-xl tracking-tight text-slate-800">SheetSage</span>
+          </a>
+
+          <div class="hidden md:flex items-center space-x-8">
+            <a href="/#features" class="text-slate-600 hover:text-emerald-600 font-medium transition">Features</a>
+            <a href="/#how-it-works" class="text-slate-600 hover:text-emerald-600 font-medium transition"
+              >How it Works</a
+            >
+            <a href="/#demo" class="text-slate-600 hover:text-emerald-600 font-medium transition">Demo</a>
+            <a href="/pricing" class="text-slate-600 hover:text-emerald-600 font-medium transition">Pricing</a>
+            <a href="/spreadsheet-audit-checklist" class="text-slate-600 hover:text-emerald-600 font-medium transition"
+              >Audit checklist</a
+            >
+            <a href="/silent-spreadsheet-errors" class="text-slate-600 hover:text-emerald-600 font-medium transition"
+              >Guides</a
+            >
+          </div>
+
+          <div class="flex items-center gap-2">
+            <a
+              href="mailto:cherishprithvin@gmail.com?subject=$10%20Formula%20Risk%20Spot-Check"
+              class="bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 sm:px-5 rounded-full font-medium transition shadow-lg shadow-emerald-200"
+              >Send a sheet</a
+            >
+            <button
+              id="mobileMenuButton"
+              type="button"
+              class="md:hidden inline-flex items-center justify-center w-10 h-10 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 transition"
+              aria-controls="mobileMenu"
+              aria-expanded="false"
+              aria-label="Open menu"
+            >
+              <i data-lucide="menu" class="w-5 h-5 text-slate-700" aria-hidden="true"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div id="mobileMenu" class="md:hidden hidden border-t border-slate-200 bg-white">
+        <div class="max-w-7xl mx-auto px-4 py-4 space-y-3">
+          <a href="/#features" class="block text-slate-700 font-medium hover:text-emerald-600 transition">Features</a>
+          <a href="/#how-it-works" class="block text-slate-700 font-medium hover:text-emerald-600 transition"
+            >How it Works</a
+          >
+          <a href="/#demo" class="block text-slate-700 font-medium hover:text-emerald-600 transition">Demo</a>
+          <a href="/pricing" class="block text-slate-700 font-medium hover:text-emerald-600 transition">Pricing</a>
+          <a
+            href="/spreadsheet-audit-checklist"
+            class="block text-slate-700 font-medium hover:text-emerald-600 transition"
+            >Audit checklist</a
+          >
+          <a href="/silent-spreadsheet-errors" class="block text-slate-700 font-medium hover:text-emerald-600 transition"
+            >Guides</a
+          >
+          <a
+            href="mailto:cherishprithvin@gmail.com?subject=$10%20Formula%20Risk%20Spot-Check"
+            class="block text-slate-700 font-medium hover:text-emerald-600 transition"
+            >Send a sheet</a
+          >
+        </div>
+      </div>
+    </nav>
+
+    <div
+      id="mobileMenuOverlay"
+      class="md:hidden hidden fixed inset-0 bg-slate-900/30 backdrop-blur-sm z-40"
+      aria-hidden="true"
+    ></div>
+
+    <main id="content">
+      <section class="relative overflow-hidden bg-grid pt-32 pb-20 lg:pt-40 lg:pb-28">
+        <div class="absolute -top-12 -right-12 w-72 h-72 bg-emerald-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
+        <div class="absolute -bottom-12 -left-12 w-72 h-72 bg-teal-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div class="grid lg:grid-cols-[1.1fr_0.9fr] gap-12 items-center">
+            <div class="text-center lg:text-left">
+              <div
+                class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-100 text-emerald-700 text-sm font-semibold mb-6 mx-auto lg:mx-0"
+              >
+                <i data-lucide="search-check" class="w-4 h-4" aria-hidden="true"></i>
+                <span>$10 one-off spreadsheet review</span>
+              </div>
+
+              <h1 class="text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight mb-6">
+                Find the formula risks before they become expensive.
+              </h1>
+
+              <p class="text-xl text-slate-600 mb-8 leading-relaxed max-w-2xl mx-auto lg:mx-0">
+                Send one Google Sheet or Excel workbook and get a concise formula-risk spot-check:
+                the highest-risk formulas, why they matter, and what to fix first.
+              </p>
+
+              <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                <a
+                  href="mailto:cherishprithvin@gmail.com?subject=$10%20Formula%20Risk%20Spot-Check&body=Hi%20Cherish%2C%0A%0AI%20paid%20%2410%20to%20cherishroby%40gmail.com%20and%20would%20like%20a%20formula-risk%20spot-check.%0A%0ASheet%20or%20Excel%20link%3A%20%0AContext%20or%20main%20concern%3A%20%0A%0AThanks%2C"
+                  class="flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-4 rounded-lg font-bold text-lg transition shadow-xl shadow-emerald-200"
+                >
+                  <i data-lucide="mail" aria-hidden="true"></i>
+                  Start by email
+                </a>
+                <a
+                  href="#how-it-works"
+                  class="flex items-center justify-center gap-2 bg-white hover:bg-slate-50 text-slate-700 border border-slate-300 px-8 py-4 rounded-lg font-bold text-lg transition"
+                >
+                  <i data-lucide="list-checks" aria-hidden="true"></i>
+                  How it works
+                </a>
+              </div>
+
+              <p class="mt-4 text-sm text-slate-500">
+                PayPal: <span class="font-semibold text-slate-700">cherishroby@gmail.com</span>.
+                Delivery target: within 24 hours for one workbook or key sheet.
+              </p>
+            </div>
+
+            <div class="bg-white rounded-2xl shadow-2xl border border-slate-200 overflow-hidden">
+              <div class="bg-slate-50 border-b border-slate-200 p-4 flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                  <div class="w-9 h-9 bg-emerald-600 rounded-xl flex items-center justify-center text-white font-bold" aria-hidden="true">
+                    S
+                  </div>
+                  <div>
+                    <div class="font-semibold text-slate-900 leading-tight">Spot-check result</div>
+                    <div class="text-xs text-slate-500">Compact review, no meeting required</div>
+                  </div>
+                </div>
+                <span class="text-xs font-bold bg-emerald-50 text-emerald-700 border border-emerald-200 px-3 py-1 rounded-full">
+                  $10
+                </span>
+              </div>
+              <div class="p-6 space-y-4">
+                <div class="flex gap-3">
+                  <i data-lucide="alert-triangle" class="w-5 h-5 text-amber-500 shrink-0 mt-0.5" aria-hidden="true"></i>
+                  <div>
+                    <p class="font-semibold text-slate-900">Risk patterns flagged</p>
+                    <p class="text-sm text-slate-600">Approximate lookup modes, brittle ranges, magic numbers, hidden blanks, and formulas likely to drift.</p>
+                  </div>
+                </div>
+                <div class="flex gap-3">
+                  <i data-lucide="clipboard-check" class="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" aria-hidden="true"></i>
+                  <div>
+                    <p class="font-semibold text-slate-900">Prioritized findings</p>
+                    <p class="text-sm text-slate-600">You get the top issues in plain English, with cell references where possible.</p>
+                  </div>
+                </div>
+                <div class="flex gap-3">
+                  <i data-lucide="wrench" class="w-5 h-5 text-slate-600 shrink-0 mt-0.5" aria-hidden="true"></i>
+                  <div>
+                    <p class="font-semibold text-slate-900">Practical next steps</p>
+                    <p class="text-sm text-slate-600">Each finding includes a fix direction so you can decide whether to patch, rebuild, or monitor it.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="how-it-works" class="py-20 bg-white border-y border-slate-200">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center max-w-3xl mx-auto mb-12">
+            <h2 class="text-3xl lg:text-4xl font-extrabold tracking-tight mb-4">How the $10 spot-check works</h2>
+            <p class="text-lg text-slate-600">
+              Designed for small teams that want a second pair of eyes before a spreadsheet quietly bites them.
+            </p>
+          </div>
+
+          <div class="grid md:grid-cols-3 gap-6">
+            <div class="bg-slate-50 border border-slate-200 rounded-xl p-6">
+              <div class="w-10 h-10 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center mb-4">
+                <i data-lucide="badge-dollar-sign" aria-hidden="true"></i>
+              </div>
+              <h3 class="font-bold text-lg text-slate-900 mb-2">1. Pay $10</h3>
+              <p class="text-slate-600 text-sm leading-relaxed">
+                Send $10 via PayPal to <span class="font-semibold text-slate-800">cherishroby@gmail.com</span>.
+              </p>
+            </div>
+
+            <div class="bg-slate-50 border border-slate-200 rounded-xl p-6">
+              <div class="w-10 h-10 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center mb-4">
+                <i data-lucide="send" aria-hidden="true"></i>
+              </div>
+              <h3 class="font-bold text-lg text-slate-900 mb-2">2. Send the sheet</h3>
+              <p class="text-slate-600 text-sm leading-relaxed">
+                Email a Google Sheets view/comment link, Excel file, screenshot set, or exported formula list to
+                <span class="font-semibold text-slate-800">cherishprithvin@gmail.com</span>.
+              </p>
+            </div>
+
+            <div class="bg-slate-50 border border-slate-200 rounded-xl p-6">
+              <div class="w-10 h-10 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center mb-4">
+                <i data-lucide="file-check-2" aria-hidden="true"></i>
+              </div>
+              <h3 class="font-bold text-lg text-slate-900 mb-2">3. Get the review</h3>
+              <p class="text-slate-600 text-sm leading-relaxed">
+                Receive a concise report with the most important formula risks, impact, and next-step recommendations.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="py-20 bg-slate-50">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="grid lg:grid-cols-2 gap-10 items-start">
+            <div>
+              <h2 class="text-3xl font-extrabold tracking-tight mb-4">Best fit</h2>
+              <ul class="space-y-3 text-slate-700">
+                <li class="flex gap-3">
+                  <i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" aria-hidden="true"></i>
+                  A budget, quote, tracker, roster, reconciliation, KPI, or operational sheet.
+                </li>
+                <li class="flex gap-3">
+                  <i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" aria-hidden="true"></i>
+                  One workbook, one critical tab, or a clear formula area you want checked.
+                </li>
+                <li class="flex gap-3">
+                  <i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" aria-hidden="true"></i>
+                  Teams that want a practical risk review, not a full rebuild.
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <h2 class="text-3xl font-extrabold tracking-tight mb-4">Boundaries</h2>
+              <ul class="space-y-3 text-slate-700">
+                <li class="flex gap-3">
+                  <i data-lucide="shield-alert" class="w-5 h-5 text-amber-500 shrink-0 mt-0.5" aria-hidden="true"></i>
+                  Do not send bank logins, passwords, medical records, or sensitive personal data.
+                </li>
+                <li class="flex gap-3">
+                  <i data-lucide="shield-alert" class="w-5 h-5 text-amber-500 shrink-0 mt-0.5" aria-hidden="true"></i>
+                  This is a spot-check, not tax, legal, financial, or accounting advice.
+                </li>
+                <li class="flex gap-3">
+                  <i data-lucide="shield-alert" class="w-5 h-5 text-amber-500 shrink-0 mt-0.5" aria-hidden="true"></i>
+                  If the workbook is too large for a $10 review, you will get a scoped first pass or a refund offer.
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="py-20 bg-emerald-950 text-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 class="text-3xl lg:text-4xl font-extrabold tracking-tight mb-4">Ready for a quick second look?</h2>
+          <p class="text-lg text-emerald-100 mb-8">
+            Pay $10 to cherishroby@gmail.com, then email the workbook or link with a short note about what matters most.
+          </p>
+          <a
+            href="mailto:cherishprithvin@gmail.com?subject=$10%20Formula%20Risk%20Spot-Check&body=Hi%20Cherish%2C%0A%0AI%20paid%20%2410%20to%20cherishroby%40gmail.com%20and%20would%20like%20a%20formula-risk%20spot-check.%0A%0ASheet%20or%20Excel%20link%3A%20%0AContext%20or%20main%20concern%3A%20%0A%0AThanks%2C"
+            class="inline-flex items-center justify-center gap-2 bg-emerald-500 hover:bg-emerald-600 text-white px-8 py-4 rounded-lg font-bold text-lg transition shadow-lg shadow-emerald-900/50"
+          >
+            <i data-lucide="mail" aria-hidden="true"></i>
+            Email the sheet
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="bg-white border-t border-slate-200 py-10">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+          <a href="/" class="flex items-center gap-2">
+            <div class="w-8 h-8 bg-emerald-600 rounded-lg flex items-center justify-center text-white font-bold text-xl" aria-hidden="true">
+              S
+            </div>
+            <span class="font-bold text-xl text-slate-800">SheetSage</span>
+          </a>
+
+          <div class="flex flex-wrap justify-center gap-6 text-sm text-slate-500">
+            <a href="/pricing" class="hover:text-emerald-600 transition">Pricing</a>
+            <a href="/silent-spreadsheet-errors" class="hover:text-emerald-600 transition">Guides</a>
+            <a href="/spreadsheet-audit-checklist" class="hover:text-emerald-600 transition">Audit checklist</a>
+            <a href="/privacy" class="hover:text-emerald-600 transition">Privacy</a>
+            <a href="/terms" class="hover:text-emerald-600 transition">Terms</a>
+            <a href="mailto:cherishprithvin@gmail.com" class="hover:text-emerald-600 transition">Contact</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

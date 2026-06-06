@@ -6,6 +6,7 @@ Static website pages for SheetSage.
 
 - `index.html` - homepage / marketing
 - `pricing.html` - pricing
+- `formula-risk-spot-check.html` - $10 formula risk spot-check offer
 - `privacy.html` - privacy policy
 - `terms.html` - terms of service
 - `sheetsage-vs-manual-auditing.html` - comparison page (SheetSage vs manual auditing)
