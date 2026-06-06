@@ -179,6 +179,15 @@
                 PayPal: <span class="font-semibold text-slate-700">cherishroby@gmail.com</span>.
                 Delivery target: within 24 hours for one workbook or key sheet.
               </p>
+              <button
+                type="button"
+                data-copy-paypal
+                class="mt-3 inline-flex items-center justify-center gap-2 rounded-lg border border-emerald-200 bg-white px-4 py-2 text-sm font-semibold text-emerald-700 shadow-sm transition hover:bg-emerald-50"
+              >
+                <i data-lucide="copy" class="w-4 h-4" aria-hidden="true"></i>
+                Copy PayPal email
+              </button>
+              <p data-copy-paypal-status class="mt-2 min-h-5 text-sm font-medium text-emerald-700" aria-live="polite"></p>
             </div>
 
             <div class="bg-white rounded-2xl shadow-2xl border border-slate-200 overflow-hidden">
@@ -242,6 +251,14 @@
               <p class="text-slate-600 text-sm leading-relaxed">
                 Send $10 via PayPal to <span class="font-semibold text-slate-800">cherishroby@gmail.com</span>.
               </p>
+              <button
+                type="button"
+                data-copy-paypal
+                class="mt-4 inline-flex items-center justify-center gap-2 rounded-lg border border-emerald-200 bg-white px-3 py-2 text-sm font-semibold text-emerald-700 transition hover:bg-emerald-50"
+              >
+                <i data-lucide="copy" class="w-4 h-4" aria-hidden="true"></i>
+                Copy email
+              </button>
             </div>
 
             <div class="bg-slate-50 border border-slate-200 rounded-xl p-6">
@@ -316,13 +333,24 @@
           <p class="text-lg text-emerald-100 mb-8">
             Pay $10 to cherishroby@gmail.com, then email the workbook or link with a short note about what matters most.
           </p>
-          <a
-            href="mailto:cherishprithvin@gmail.com?subject=$10%20Formula%20Risk%20Spot-Check&body=Hi%20Cherish%2C%0A%0AI%20paid%20%2410%20to%20cherishroby%40gmail.com%20and%20would%20like%20a%20formula-risk%20spot-check.%0A%0ASheet%20or%20Excel%20link%3A%20%0AContext%20or%20main%20concern%3A%20%0A%0AThanks%2C"
-            class="inline-flex items-center justify-center gap-2 bg-emerald-500 hover:bg-emerald-600 text-white px-8 py-4 rounded-lg font-bold text-lg transition shadow-lg shadow-emerald-900/50"
-          >
-            <i data-lucide="mail" aria-hidden="true"></i>
-            Email the sheet
-          </a>
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <button
+              type="button"
+              data-copy-paypal
+              class="inline-flex items-center justify-center gap-2 bg-white hover:bg-emerald-50 text-emerald-800 px-8 py-4 rounded-lg font-bold text-lg transition shadow-lg shadow-emerald-900/40"
+            >
+              <i data-lucide="copy" aria-hidden="true"></i>
+              Copy PayPal email
+            </button>
+            <a
+              href="mailto:cherishprithvin@gmail.com?subject=$10%20Formula%20Risk%20Spot-Check&body=Hi%20Cherish%2C%0A%0AI%20paid%20%2410%20to%20cherishroby%40gmail.com%20and%20would%20like%20a%20formula-risk%20spot-check.%0A%0ASheet%20or%20Excel%20link%3A%20%0AContext%20or%20main%20concern%3A%20%0A%0AThanks%2C"
+              class="inline-flex items-center justify-center gap-2 bg-emerald-500 hover:bg-emerald-600 text-white px-8 py-4 rounded-lg font-bold text-lg transition shadow-lg shadow-emerald-900/50"
+            >
+              <i data-lucide="mail" aria-hidden="true"></i>
+              Email the sheet
+            </a>
+          </div>
+          <p data-copy-paypal-status class="mt-4 min-h-6 text-sm font-semibold text-emerald-100" aria-live="polite"></p>
         </div>
       </section>
     </main>
@@ -348,5 +376,56 @@
         </div>
       </div>
     </footer>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var paypalEmail = "cherishroby@gmail.com";
+        var copyButtons = document.querySelectorAll("[data-copy-paypal]");
+        var statusNodes = document.querySelectorAll("[data-copy-paypal-status]");
+
+        function setCopyStatus(message) {
+          statusNodes.forEach(function (node) {
+            node.textContent = message;
+          });
+        }
+
+        function copyFallback() {
+          var input = document.createElement("input");
+          input.value = paypalEmail;
+          input.setAttribute("readonly", "readonly");
+          input.style.position = "fixed";
+          input.style.left = "-9999px";
+          document.body.appendChild(input);
+          input.select();
+          document.execCommand("copy");
+          document.body.removeChild(input);
+        }
+
+        copyButtons.forEach(function (button) {
+          button.addEventListener("click", function () {
+            var originalHtml = button.innerHTML;
+            var done = function () {
+              setCopyStatus("Copied PayPal email: " + paypalEmail);
+              button.textContent = "Copied";
+              window.setTimeout(function () {
+                button.innerHTML = originalHtml;
+                if (window.lucide) {
+                  window.lucide.createIcons();
+                }
+              }, 1800);
+            };
+
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+              navigator.clipboard.writeText(paypalEmail).then(done).catch(function () {
+                copyFallback();
+                done();
+              });
+            } else {
+              copyFallback();
+              done();
+            }
+          });
+        });
+      });
+    </script>
   </body>
 </html>
